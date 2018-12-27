@@ -52,7 +52,7 @@
                         <a href="/projetoc/?action=listposts">POST</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/projetoc/?action=creerpost">CREER UN POST</a>
+                        <a href="/projetoc/?action=addpost">CREER UN POST</a>
                     </li>
                      <li class="page-scroll">
                         <a href="/projetoc/#Contact">CONTACT</a>

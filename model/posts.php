@@ -87,12 +87,13 @@ class Posts
         $this->contenu = $contenu;
     }
 
-    public function setCreated_at(DateTime $created_at)
+    public function setCreated_at($created_at)
     {
+        
         $this->created_at = $created_at;
     }
 
-    public function setUpdated_at(DateTime $updated_at)
+    public function setUpdated_at($updated_at)
     {
         $this->updated_at = $updated_at;
     }

@@ -26,18 +26,82 @@ class Posts_controller{
             $datas['contenu'] = $posts['contenu'];
 
             $posts = new Posts($datas);
-            echo $posts->getAuteur();
+            
             $result = $this->manager->add_post($posts);
             if($result)
             {
-                header('Location: /projetoc/?action=home');
+                header('Location: /projetoc/?action=listposts');
             }
         }
         
     }
-    public function view()
+    public function viewadd()
     {
     	include 'view/creerpost.php';
     }
-}
+
+  
+
+    public function viewpost($id)
+    {
+    	$post = $this->manager->getPost($id);
+    	include 'view/postview.php';
+    }
+
+    public function listposts()
+    {
+    	$posts = $this->manager->getPosts();
+    	include 'view/listposts.php';
+    }
+
+    public function edit($id, array $posts)
+    {
  
+    		   
+        	
+            $datas['auteur'] = $posts['auteur'];
+            $datas['titre'] = $posts['titre'];
+            $datas['chapo'] = $posts['chapo'];
+            $datas['contenu'] = $posts['contenu'];
+            $datas['id'] = $id;
+            
+
+            $posts = new Posts($datas);
+
+            
+            $result = $this->manager->editPost($posts);
+            if($result)
+            {
+                header('Location:index.php?action=viewsinglepost&id=' . $posts->getId());
+            }
+        
+
+
+    }
+    public function viewedit($id)
+    {
+    	$post = $this->manager->getPost($id);
+    	include 'view/editview.php';
+    }
+
+    public function viewdelete($id)
+    {
+    	$post = $this->manager->getPost($id);
+    	include 'view/viewdelete.php';
+    }
+
+    public function delete($id)
+    {
+    	
+        
+        if(!empty($_POST['id']))
+        {
+            $id = $_POST['id'];
+            $result = $this->manager->deletePost($id);
+            if($result)
+            {
+                header('Location: index.php?action=listposts');
+            }
+        }
+    }
+}

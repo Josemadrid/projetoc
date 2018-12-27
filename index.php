@@ -33,14 +33,15 @@ try{
 				}
 			}
 		}
-		elseif ($_GET['action'] == 'creerpost')
-		{
-			
-			$instance->view();
-		}
+		
 		elseif ($_GET['action'] == 'addpost')
 		{
-			
+			if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+				$instance->viewadd();
+			}
+				elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				
+				
 
 			if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
 			{ 
@@ -59,16 +60,65 @@ try{
 				}
 			}
 		}
+	}
 		elseif ($_GET['action'] == 'listposts') 
 		{
             
-                listposts();
+                $instance->listposts();
         }
         
-        elseif ($_GET['action'] == 'singlepost')
-        {
-        	singlepost();
-        }
+    
+        elseif ($_GET['action'] == 'viewsinglepost')
+		{
+			if (isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				
+				$instance->viewpost($_GET['id']);
+			}
+			
+			else{
+				header('Location: /projetoc/?action=listposts');
+			}
+		}
+		elseif ($_GET['action'] == 'editpost')
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'GET')
+			{
+				$instance->viewedit($_GET['id']);
+			}
+			elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+			{
+			if (isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				
+				$instance->edit($_GET['id'], $_POST);
+			}
+			else
+			{
+				header('Location: /projetoc/?action=listposts');
+			}
+			}
+		}
+		elseif ($_GET['action'] == 'delete')
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'GET')
+			{
+				
+				$instance->viewdelete($_GET['id']);
+			}
+			elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+			{
+			if (isset($_GET['id']) && $_GET['id'] > 0)
+			{
+				
+				$instance->delete($_GET['id'], $_POST);
+			}
+			else
+			{
+				header('Location: /projetoc/?action=listposts');
+			}
+			}
+		}
 
 
 	}
@@ -80,9 +130,7 @@ else {
 
 }
 catch(Exception $e){
-	echo 'Erreur';
+	echo $e->getMessage();
 }
 
 
-//$instance = new Posts_controller();
-			//$instance->add();
