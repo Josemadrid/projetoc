@@ -1,8 +1,9 @@
+
 <?php ob_start(); ?>
     <section>
         <div class="container flipboard-boxes flipboard-inscription">
             <div class="row">
-                <div class="col-lg-12 card-inscription">
+                <div class="col-lg-5 card-inscription">
                     <div class="card-inscription-body">
 
                         <div id="upper_left-corner"></div>
@@ -13,30 +14,41 @@
                         <h4 class="card-inscription-subtitle">TYPE / <span class="type-group">INSCRIPTION /</span></h4>
                         <h3 class="card-inscription-title">Remplissez les champs pour vous inscrire</h3>
                         <p class="card-inscription-text">
-                        <form id="signupForm" method="post">
+                        <form id="signupForm" action="index.php?action=connection" method="post">
                             <div class="has-error">
-                                <label class="form-label card-inscription-text" for="username">Votre Pseudo
+                                <label class="form-label card-inscription-text" for="pseudo">Votre Pseudo
                                     : </label> <input class="form-control" type="text"
-                                                      name="username"
-                                                      id="username">
+                                                      name="pseudo"
+                                                      id="pseudo"
+                                                      required>
+                            </div>
+                            <div class="has-error">
+                                <label class="form-label card-inscription-text" for="email">Votre Email
+                                    : </label> <input class="form-control" type="text"
+                                                      name="email"
+                                                      id="email"
+                                                      required>
                             </div>
                             <div class="has-error">
                                 <label class="form-label card-inscription-text" for="password">Votre mot de
                                     passe
                                     : </label> <input class="form-control" type="password"
-                                                      name="newpassword"
-                                                      id="newpassword">
+                                                      name="password"
+                                                      id="password"
+                                                      required>
                             </div>
                             <div class="has-error">
-                                <label class="form-label card-inscription-text" for="confirm_password">Confirmez
+                                <label class="form-label card-inscription-text" for="confirmpassword">Confirmez
                                     votre mot de passe : </label> <input class="form-control"
                                                                          type="password"
-                                                                         name="confirm_newpassword"
-                                                                         id="confirm_newpassword">
+                                                                         name="confirmpassword"
+                                                                         id="confirmpassword"
+                                                                         required>
                             </div>
+                            <br>
                             <div>
                                 <button type="submit" class="btn btn-primary signup-submit" name="signup"
-                                        value="Soumettre">
+                                        value="Soumettre" required>
                                     Soumettre
                                 </button>
                                 <span id="signup-success"><span class="oi oi-check"></span> Succès, Vous pouvez vous connecter maintenant</span>
@@ -44,7 +56,43 @@
                         </form>
                         </p>
                     </div>
+
                 </div>
+                <div class="col-lg-2 card-inscription"></div>
+                     <div class="col-lg-5 card-inscription">
+                        <div class="card-inscription-body">
+
+                        <div id="upper_left-corner"></div>
+                        <div id="upper_right-corner"></div>
+                        <div id="lower_left-corner"></div>
+                        <div id="lower_right-corner"></div>
+
+                        <h4 class="card-inscription-subtitle">TYPE / <span class="type-group">CONNECTION /</span></h4>
+                        <h3 class="card-inscription-title">Remplissez les champs pour vous connecter</h3>
+                        <p class="card-inscription-text">
+                        <form id="signupForm" method="post" action="index.php?action=connect">
+                            <div class="has-error">
+                                <label class="form-label card-inscription-text" for="username">Votre Pseudo
+                                    : </label> <input class="form-control" type="text"
+                                                      name="pseudo"
+                                                      id="username">
+                            </div>
+                            <div class="has-error">
+                                <label class="form-label card-inscription-text" for="password">Votre mot de
+                                    passe
+                                    : </label> <input class="form-control" type="password"
+                                                      name="password"
+                                                      id="newpassword">
+                            </div>
+                        <br>
+                         <div>
+                                <button type="submit" class="btn btn-primary signup-submit" name="signup"
+                                        value="Soumettre" required>
+                                    Soumettre
+                                </button>
+                                <span id="signup-success"><span class="oi oi-check"></span> Succès, Vous pouvez vous connecter maintenant</span>
+                            </div>
+                     </div>
             </div>
         </div>
     </section>

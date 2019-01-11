@@ -4,13 +4,15 @@ require_once ('model/posts_model.php');
 require_once  'model/posts.php';
 
 
-class Posts_controller{
+class Posts_Controller{
 
 	private $manager;
+	
 
 	public function __construct(){
 
 		$this->manager = new Posts_model();
+		
 	}
 
 	public function add(array $posts)
@@ -104,4 +106,6 @@ class Posts_controller{
             }
         }
     }
-}
+
+    
+} 

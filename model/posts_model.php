@@ -1,13 +1,15 @@
 <?php
 require_once('conection_db.php');
 
-class Posts_model{
+class Posts_model
+{
 
 
 	private $db;
 	private $posts=[];
 
-	public function __construct(){
+	public function __construct()
+    {
 
 		
 
@@ -17,7 +19,8 @@ class Posts_model{
 
 	}
 
-	public function add_post(Posts $posts){
+	public function add_post(Posts $posts)
+    {
 
 
     	$addpost = $this->db->prepare('INSERT INTO posts (auteur, titre, chapo, contenu, created_at, updated_at) VALUES (:auteur, :titre, :chapo, :contenu, NOW(), NOW())');
@@ -87,10 +90,13 @@ class Posts_model{
     {
         $delete = $this->db->prepare('DELETE FROM posts WHERE id= :id');
         $delete->bindValue(':id', $id);
-        $delete->execute();
+        $result = $delete->execute();
         $delete->closeCursor();
-        return true;
+
+        return $result;
     }
+
+    
             
             
         

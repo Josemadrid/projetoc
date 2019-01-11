@@ -1,6 +1,8 @@
 <?php
+require_once 'model/utilisateur_model.php';
+require_once 'model/hydrate.php';
 
-class User
+class Utilisateur
 {
     private $id;
     private $email;
@@ -8,47 +10,37 @@ class User
     private $password;
     private $role;
 
+use Hydrate;
 // CONSTRUCTOR
-    public function __construct($value = [])
+    public function __construct($datas = [])
     {
-        if (!empty($value)) {
-            $this->hydrate($value);
-        }
-
-    }
-
-    public function hydrate($data)
-    {
-        foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst($key);
-
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
+        if (!empty($datas))
+        {
+            $this->hydrate($datas);
         }
     }
 
 // GETTERS
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
-    public function email()
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function pseudo()
+    public function getPseudo()
     {
         return $this->pseudo;
     }
 
-    public function password()
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function role()
+    public function getRole()
     {
         return $this->role;
     }
@@ -61,7 +53,7 @@ class User
 
     public function setEmail($email)
     {
-        $this->rank = $email;
+        $this->email = $email;
     }
 
     public function setPseudo($pseudo)

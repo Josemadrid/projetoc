@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 
@@ -54,10 +55,42 @@
                     <li class="page-scroll">
                         <a href="/projetoc/?action=addpost">CREER UN POST</a>
                     </li>
+                    <li class="page-scroll">
+                        <a href="/projetoc/?action=connection">CONNECTION</a>
+                    </li>
                      <li class="page-scroll">
                         <a href="/projetoc/#Contact">CONTACT</a>
                     </li>
+                   
+                    <li class="page-scroll">
+                       <a style="color:red"> 
+                        <?php 
+
+                            if(isset($_SESSION['user']))
+                            {
+                                if($_SESSION['user']->getRole() == 2)
+                                {
+                                    echo 'Bienvenue Patron';
+                                }
+                                else
+                                {
+                                    echo 'Bienvenue    ' . $_SESSION['user']->getPseudo();
+                                }
+                            }
+
+                           
+                           
+                        
+                       
+                    ?>  </a>
+                 </li>
+                    <li class="page-scroll">
+                        <a style="color:black" href="/projetoc/deconnection.php">Deconnexion</a>
+                    </li>
+
+                    
                 </ul>
+                
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -80,6 +113,7 @@
             </div>
         </div>
     </header>
+
 
     
     	<?= $content ?>
@@ -160,5 +194,9 @@
 
     
 	</body>
+</html>
+</div>
+</footer>
+</body>
 </html>
 

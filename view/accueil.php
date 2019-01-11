@@ -7,7 +7,7 @@ ob_start();
             <div class="row">
                 <div class="col-sm-offset-2   col-sm-8">
                     <h1 id="homeHeading">Jose Madrid</h1>
-
+                                    
                     <hr>
                     <img src="public/themes/img/photo1.jpg" width="150" height="150" class="pull-right">
                     <h3>Mes missions comme développeur PHP</h3>

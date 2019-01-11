@@ -2,10 +2,19 @@
 require 'controller/home.php';
 require 'controller/listposts.php';
 require 'controller/posts_controller.php';
+require 'controller/Utilisateur_controlleur.php';
 require 'vendor/autoload.php';
+require 'controller/Admin_controlleur.php';
 
+if(!isset($_SESSION))
+{
+	session_start();
+}
 
-$instance = new Posts_controller();
+$admin_controlleur = new AdminControlleur();
+$users = new Utilisateur();
+$instance = new Posts_Controller();
+$user_controlleur = new Utilisateur_Controlleur();
 
 try{
 	if(isset($_GET['action']))
@@ -39,28 +48,29 @@ try{
 			if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 				$instance->viewadd();
 			}
-				elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
-				
-				
-
-			if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
-			{ 
-				if(isset($_POST['titre']) && !empty(trim($_POST['titre'])))
+				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
 				{
-					if(isset($_POST['chapo']) && !empty(trim($_POST['chapo'])))
-						{
-							if(isset($_POST['contenu']) && !empty(trim($_POST['contenu'])))
+				
+				
+
+				if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
+				{ 
+					if(isset($_POST['titre']) && !empty(trim($_POST['titre'])))
+					{
+						if(isset($_POST['chapo']) && !empty(trim($_POST['chapo'])))
 							{
+								if(isset($_POST['contenu']) && !empty(trim($_POST['contenu'])))
+								{
 
-								$instance->add($_POST);
+									$instance->add($_POST);
 
 
+								}
 							}
-						}
+					}
 				}
 			}
 		}
-	}
 		elseif ($_GET['action'] == 'listposts') 
 		{
             
@@ -119,6 +129,81 @@ try{
 			}
 			}
 		}
+		elseif ($_GET['action'] == 'connection')
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'GET')
+			{
+				$user_controlleur->viewconnection();
+			}
+				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+				{
+				
+				
+
+					if(isset($_POST['pseudo']) && !empty(trim($_POST['pseudo'])))
+					{ 
+						if(isset($_POST['email']) && !empty(trim($_POST['email'])))
+						{
+							if(isset($_POST['password']) && !empty(trim($_POST['password'])))
+								{
+									if(isset($_POST['confirmpassword']) && !empty(trim($_POST['confirmpassword'])))
+									{
+
+										$user_controlleur->inscription($_POST);
+									}
+								}
+						}
+					}
+				}					
+			else
+			{
+				header('Location: /projetoc/?action=connection');
+			}
+		}
+		elseif ($_GET['action'] == 'connect')
+		{
+		   if($_SERVER['REQUEST_METHOD'] == 'POST')
+		   {
+		   	if(isset($_POST['pseudo']) && !empty(trim($_POST['pseudo'])))
+		   	{
+		   		if(isset($_POST['password']) && !empty(trim($_POST['password'])))
+		   		{
+		   			$user_controlleur->connection($_POST);
+		   		}
+		   	}
+
+		   }
+		   else
+		   {
+		   	header('Location: /projetoc/?action=connection');
+		   }
+
+		   
+		}
+
+		elseif ($_GET['action'] == 'admin')
+		{
+		   if($_SESSION['user']->getRole() == 2)
+		   {
+		   		if(isset($_GET['adminaction']))
+		   		{
+		   			if($_GET['adminaction'] == 'accueil')
+		   			{
+		   				$admin_controlleur->accueil();
+		   			}
+		   		}
+
+		   }
+		   
+
+	    
+		   else
+		   {
+		   	header('Location: /projetoc/?action=connection');
+		   }
+
+		   
+		}
 
 
 	}
@@ -129,7 +214,8 @@ else {
 	}
 
 }
-catch(Exception $e){
+catch(Exception $e)
+{
 	echo $e->getMessage();
 }
 
