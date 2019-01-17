@@ -2,16 +2,20 @@
 require_once ('model/conection_db.php');
 require_once ('model/posts_model.php');
 require_once  'model/posts.php';
+require_once ('model/commentaire_model.php');
+require_once  ('model/commentaires.php');
 
 
 class Posts_Controller{
 
 	private $manager;
+    private $comment;
 	
 
 	public function __construct(){
 
 		$this->manager = new Posts_model();
+        $this->comment = new Commentaire_model();
 		
 	}
 
@@ -47,7 +51,13 @@ class Posts_Controller{
     public function viewpost($id)
     {
     	$post = $this->manager->getPost($id);
+
+        $comment = $this->comment->getComment($id);
+
+        
     	include 'view/postview.php';
+
+
     }
 
     public function listposts()

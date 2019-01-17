@@ -1,4 +1,10 @@
 <?php
+
+require_once 'model/commentaire_model.php';
+require_once 'model/hydrate.php';
+require_once 'model/utilisateurs.php';
+
+
 class Commentaire
 {
 	private $id;
@@ -8,66 +14,68 @@ class Commentaire
 	private $datecreation_commentaire;
 	private $datemodification_commentaire;
 	private $valid;
+    private $utilisateur;
 
 
-	public function __construct(array $tableau)
-	{
-		$this->hydrate($donnees);
-	}
-
-
-
-public function hydrate(array $donnees)
-  {
-    foreach ($donnees as $key => $value)
+	use Hydrate;
+// CONSTRUCTOR
+    public function __construct($datas = [])
     {
-      $method = 'set'.ucfirst($key);
-      
-      if (method_exists($this, $method))
-      {
-        $this->$method($value);
-      }
+        if (!empty($datas))
+        {
+            $this->hydrate($datas);
+
+        }
+        
     }
-  }
 
 
 // GETTERS
-    public function id()
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+    public function getId()
     {
         return $this->id;
     }
 
-    public function post_id()
+    public function getPost_id()
     {
         return $this->post_id;
     }
 
-    public function utilisateur_id()
+    public function getUtilisateur_id()
     {
         return $this->utilisateur_id;
     }
 
-    public function contenu_commentaire()
+    public function getContenu_commentaire()
     {
         return $this->contenu_commentaire;
     }
 
-    public function datecreation_commentaire()
+    public function getDatecreation_commentaire()
     {
         return $this->datecreation_commentaire;
     }
 
-    public function datemodification_commentaire()
+    public function getDatemodification_commentaire()
     {
         return $this->datemodification_commentaire;
     }
 
-    public function valid()
+    public function getValid()
     {
         return $this->valid;
     }
 
 // SETTERS
+
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+    }
     public function setId($id)
     {
         $this->id = $id;
@@ -78,7 +86,7 @@ public function hydrate(array $donnees)
         $this->post_id = (int)$post_id;
     }
 
-    public function setUtilisateur_id($pseudo)
+    public function setUtilisateur_id($utilisateur_id)
     {
         $this->utilisateur_id = $utilisateur_id;
     }
@@ -88,12 +96,12 @@ public function hydrate(array $donnees)
         $this->contenu_commentaire = $contenu_commentaire;
     }
 
-    public function setDatecreation_commentaire(DateTime $datecreation_commentaire)
+    public function setDatecreation_commentaire( $datecreation_commentaire)
     {
         $this->datecreation_commentaire = $datecreation_commentaire;
     }
 
-    public function setDatemodification_commentaire(DateTime $datemodification_commentaire)
+    public function setDatemodification_commentaire( $datemodification_commentaire)
     {
         $this->datemodification_commentaire = $datemodification_commentaire;
     }
@@ -106,7 +114,7 @@ public function hydrate(array $donnees)
 
 
 
-}
+
 
 
 

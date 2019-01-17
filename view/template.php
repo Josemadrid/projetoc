@@ -62,12 +62,14 @@
                         <a href="/projetoc/#Contact">CONTACT</a>
                     </li>
                    
-                    <li class="page-scroll">
-                       <a style="color:red"> 
+                    
                         <?php 
 
                             if(isset($_SESSION['user']))
-                            {
+                            { ?>
+                                <li class="page-scroll">
+                                 <a style="color:red"> 
+                                <?php
                                 if($_SESSION['user']->getRole() == 2)
                                 {
                                     echo 'Bienvenue Patron';
@@ -76,19 +78,17 @@
                                 {
                                     echo 'Bienvenue    ' . $_SESSION['user']->getPseudo();
                                 }
-                            }
-
-                           
-                           
-                        
-                       
-                    ?>  </a>
-                 </li>
-                    <li class="page-scroll">
+                                ?>
+                                </a>
+                              </li>
+                              <li class="page-scroll">
                         <a style="color:black" href="/projetoc/deconnection.php">Deconnexion</a>
                     </li>
-
-                    
+                              <?php
+                            } 
+                       
+                    ?>  
+                                     
                 </ul>
                 
             </div>

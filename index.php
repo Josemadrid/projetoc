@@ -11,6 +11,8 @@ if(!isset($_SESSION))
 	session_start();
 }
 
+
+
 $admin_controlleur = new AdminControlleur();
 $users = new Utilisateur();
 $instance = new Posts_Controller();
@@ -76,6 +78,7 @@ try{
             
                 $instance->listposts();
         }
+
         
     
         elseif ($_GET['action'] == 'viewsinglepost')
@@ -90,6 +93,8 @@ try{
 				header('Location: /projetoc/?action=listposts');
 			}
 		}
+
+
 		elseif ($_GET['action'] == 'editpost')
 		{
 			if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -180,6 +185,63 @@ try{
 
 		   
 		}
+
+
+		elseif ($_GET['action'] == 'addpost')
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+				$instance->viewadd();
+			}
+				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+				{
+				
+				
+				if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
+				{ 
+					if(isset($_POST['titre']) && !empty(trim($_POST['titre'])))
+					{
+						if(isset($_POST['chapo']) && !empty(trim($_POST['chapo'])))
+							{
+								if(isset($_POST['contenu']) && !empty(trim($_POST['contenu'])))
+								{
+									$instance->add($_POST);
+								}
+							}
+					}
+				}
+			}
+		}
+
+		elseif ($_GET['action'] == 'addcomment')
+		{
+			
+			
+				if ($_SERVER['REQUEST_METHOD'] == 'POST')
+				{
+				
+				
+
+				if(isset($_POST['postId']) && !empty(trim($_POST['postId'])))
+				{ 
+					if(isset($_POST['Message']) && !empty(trim($_POST['Message'])))
+					{
+						
+
+									$admin_controlleur->add($_POST);
+
+
+								
+							
+					}
+				}
+			}
+		}
+
+		elseif ($_GET['action'] == 'listcomment') 
+		{
+            
+                $admin_controlleur->listcomment();
+        }
 
 		elseif ($_GET['action'] == 'admin')
 		{

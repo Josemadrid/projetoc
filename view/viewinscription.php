@@ -75,14 +75,16 @@
                                 <label class="form-label card-inscription-text" for="username">Votre Pseudo
                                     : </label> <input class="form-control" type="text"
                                                       name="pseudo"
-                                                      id="username">
+                                                      id="username"
+                                                      required>
                             </div>
                             <div class="has-error">
                                 <label class="form-label card-inscription-text" for="password">Votre mot de
                                     passe
                                     : </label> <input class="form-control" type="password"
                                                       name="password"
-                                                      id="newpassword">
+                                                      id="newpassword"
+                                                      required>
                             </div>
                         <br>
                          <div>
