@@ -16,6 +16,7 @@ class AdminControlleur
 
 	public function accueil()
 	{
+		
 		include 'view/accueil.php';
 		
 	}
@@ -38,7 +39,7 @@ class AdminControlleur
             $result = $this->admin->add_comment($comment);
             if($result)
             {
-                header('Location: /projetoc/?action=listposts');
+                header('Location:index.php?action=viewsinglepost&id=' . $comment->getPost_id());
             }
         }
         
@@ -50,6 +51,41 @@ class AdminControlleur
     	$comment = $this->admin->getComment();
     	include 'view/postview.php';
     }
+
+    public function viewadmin()
+	{
+		$comment = $this->admin->getUnvalidated();
+
+		
+		include 'view/viewadmin.php';
+		
+	}
+	public function unvalidatedcomments()
+	{
+		$comment = $this->admin->getAllcomments();
+		
+		include 'view/viewadmin.php';
+	}
+	public function validcomment($id)
+	{
+		
+		if($this->admin->ifexist($id))
+		{
+			 $this->admin->valid($id);
+		}
+		
+		header('Location:/projetoc/index.php?action=admin&adminaction=viewadmin' );
+
+	}
+	public function deletecomment($id)
+	{
+		if($this->admin->ifexist($id))
+		{
+			 $this->admin->delete($id);
+		}
+		
+		header('Location:/projetoc/index.php?action=admin&adminaction=viewadmin' );
+	}
 
 
 

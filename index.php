@@ -73,6 +73,8 @@ try{
 				}
 			}
 		}
+
+
 		elseif ($_GET['action'] == 'listposts') 
 		{
             
@@ -187,53 +189,40 @@ try{
 		}
 
 
-		elseif ($_GET['action'] == 'addpost')
-		{
-			if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-				$instance->viewadd();
-			}
-				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
-				{
-				
-				
-				if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
-				{ 
-					if(isset($_POST['titre']) && !empty(trim($_POST['titre'])))
-					{
-						if(isset($_POST['chapo']) && !empty(trim($_POST['chapo'])))
-							{
-								if(isset($_POST['contenu']) && !empty(trim($_POST['contenu'])))
-								{
-									$instance->add($_POST);
-								}
-							}
-					}
-				}
-			}
-		}
+		
 
 		elseif ($_GET['action'] == 'addcomment')
 		{
 			
-			
+			if (isset($_SESSION['user']))
+            {
+            	
+            
 				if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				{
 				
 				
 
-				if(isset($_POST['postId']) && !empty(trim($_POST['postId'])))
-				{ 
-					if(isset($_POST['Message']) && !empty(trim($_POST['Message'])))
-					{
+					if(isset($_POST['postId']) && !empty(trim($_POST['postId'])))
+					{ 
+						if(isset($_POST['Message']) && !empty(trim($_POST['Message'])))
+						{
 						
 
 									$admin_controlleur->add($_POST);
 
 
-								
+						}		
 							
-					}
+					}   
 				}
+			}
+			else
+			{
+				
+            	
+            	echo 'Vous devez vous connecter';
+            
 			}
 		}
 
@@ -252,6 +241,30 @@ try{
 		   			if($_GET['adminaction'] == 'accueil')
 		   			{
 		   				$admin_controlleur->accueil();
+		   			}
+		   			if($_GET['adminaction'] == 'viewadmin')
+		   			{
+		   				$admin_controlleur->viewadmin();
+		   			}
+		   			if($_GET['adminaction'] == 'viewscomment')
+		   			{
+		   				$admin_controlleur->unvalidatedcomments();
+		   			}
+		   			if($_GET['adminaction'] == 'validcomment')
+		   			{
+		   				if(isset($_GET['id']) && $_GET['id'] > 0)
+		   				{
+		   					$admin_controlleur->validcomment($_GET['id']);
+		   				}
+		   				
+		   			}
+		   			if($_GET['adminaction'] == 'deletecomment')
+		   			{
+		   				if(isset($_GET['id']) && $_GET['id'] > 0)
+		   				{
+		   					$admin_controlleur->deletecomment($_GET['id']);
+		   				}
+		   				
 		   			}
 		   		}
 

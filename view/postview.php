@@ -26,19 +26,26 @@ ob_start();
                             }
                             
                             ?>
-
-	
+	<br>
+	<br>
+		<h3 id="homeHeading">COMMENTAIRES</h3>
 		<?php foreach ($comment as $comment): ?>
 
-		<h2 style="color:orange"><?= $comment->getUtilisateur()->getPseudo(); ?></h2>
+		<h3 style="color:blue"><?= $comment->getUtilisateur()->getPseudo(); ?></h2>
 		<p style="color:green"><strong><?= $comment->getContenu_commentaire(); ?></strong></p>
 		<p><em>Le <?= $comment->getDatecreation_commentaire(); ?>. Modifié le <?= $comment->getDatemodification_commentaire(); ?>.</em></p>
 
 		<?php endforeach; ?>
 
+
+<?php
+		if(isset($_SESSION['user']))
+		{?>
+
+
 <div class="row">
                 
-                  <h3 id="homeHeading">COMMENTAIRES</h3>
+                 
     <form class="form" role="form" action="index.php?action=addcomment" method="post">
       
 
@@ -55,8 +62,8 @@ ob_start();
 
       </div>
 	</div>
-
-	
+		<?php 
+	}?>
 </div>
 
 	</div>

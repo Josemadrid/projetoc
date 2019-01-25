@@ -52,9 +52,7 @@
                     <li class="page-scroll">
                         <a href="/projetoc/?action=listposts">POST</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="/projetoc/?action=addpost">CREER UN POST</a>
-                    </li>
+                    
                     <li class="page-scroll">
                         <a href="/projetoc/?action=connection">CONNECTION</a>
                     </li>
@@ -73,6 +71,9 @@
                                 if($_SESSION['user']->getRole() == 2)
                                 {
                                     echo 'Bienvenue Patron';
+                                    ?></a></li><li class="page-scroll">
+                                   <a style="color:red" href="/projetoc/?action=admin&adminaction=viewadmin">ADMIN</a>
+                                      </li><?php
                                 }
                                 else
                                 {
@@ -84,10 +85,12 @@
                               <li class="page-scroll">
                         <a style="color:black" href="/projetoc/deconnection.php">Deconnexion</a>
                     </li>
+                    
                               <?php
                             } 
                        
                     ?>  
+
                                      
                 </ul>
                 
