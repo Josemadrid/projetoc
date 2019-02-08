@@ -1,6 +1,6 @@
 
 <html>
-	<head>
+    <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,8 +29,8 @@
     <![endif]-->
 
 </head>
-	<body>
-		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <body>
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -63,13 +63,11 @@
                     
                         <?php 
 
-                            if(isset($_SESSION['user']))
-                            { ?>
+                        if(isset($_SESSION['user'])) { ?>
                                 <li class="page-scroll">
                                  <a style="color:red"> 
                                 <?php
-                                if($_SESSION['user']->getRole() == 2)
-                                {
+                                if($_SESSION['user']->getRole() == 2) {
                                     echo 'Bienvenue Patron';
                                     ?></a></li><li class="page-scroll">
                                    <a style="color:red" href="/projetoc/?action=admin&adminaction=viewadmin">ADMIN</a>
@@ -77,7 +75,7 @@
                                 }
                                 else
                                 {
-                                    echo 'Bienvenue    ' . $_SESSION['user']->getPseudo();
+                                    echo 'Bienvenue    ' . htmlspecialchars($_SESSION['user']->getPseudo());
                                 }
                                 ?>
                                 </a>
@@ -87,9 +85,9 @@
                     </li>
                     
                               <?php
-                            } 
+                        } 
                        
-                    ?>  
+                        ?>  
 
                                      
                 </ul>
@@ -119,12 +117,12 @@
 
 
     
-    	<?= $content ?>
+        <?php echo $content ?>
     </div>
    
-    </section>	 
+    </section>     
 
-    	 <!-- Footer -->
+         <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">
@@ -196,7 +194,7 @@
     <script src="public/themes/js/freelancer.js"></script>
 
     
-	</body>
+    </body>
 </html>
 </div>
 </footer>

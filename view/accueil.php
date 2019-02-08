@@ -75,6 +75,7 @@ ob_start();
                                 <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
                             </div>
                         </div>
+                        <input type="hidden" name="token" id="token" value="<?php echo $token; ?>" />
                     </form>
                 
                 </div>
@@ -85,7 +86,7 @@ ob_start();
 
 
 
- <?php
-$content=ob_get_clean();
+    <?php
+    $content=ob_get_clean();
 
-require 'view/template.php';
+    require 'view/template.php';

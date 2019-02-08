@@ -7,22 +7,21 @@ require_once 'model/utilisateurs.php';
 
 class Commentaire
 {
-	private $id;
-	private $post_id;
-	private $utilisateur_id;
-	private $contenu_commentaire;
-	private $datecreation_commentaire;
-	private $datemodification_commentaire;
-	private $valid;
+    private $id;
+    private $post_id;
+    private $utilisateur_id;
+    private $contenu_commentaire;
+    private $datecreation_commentaire;
+    private $datemodification_commentaire;
+    private $valid;
     private $utilisateur;
 
 
-	use Hydrate;
-// CONSTRUCTOR
+    use Hydrate;
+    // CONSTRUCTOR
     public function __construct($datas = [])
     {
-        if (!empty($datas))
-        {
+        if (!empty($datas)) {
             $this->hydrate($datas);
 
         }
@@ -30,7 +29,7 @@ class Commentaire
     }
 
 
-// GETTERS
+    // GETTERS
     public function getUtilisateur()
     {
         return $this->utilisateur;
@@ -70,7 +69,7 @@ class Commentaire
         return $this->valid;
     }
 
-// SETTERS
+    // SETTERS
 
     public function setUtilisateur($utilisateur)
     {

@@ -1,32 +1,32 @@
 <?php
-require_once('conection_db.php');
+require_once 'conection_db.php';
 
 class Utilisateur_Model
 {
 
 
-	private $db;
-	private $user=[];
+    private $db;
+    private $user=[];
 
-	public function __construct()
-	{
+    public function __construct()
+    {
 
-		
+        
 
-		$this->db=Conectdb::conection();
-		
-
-
-	}
+        $this->db=Conectdb::conection();
+        
 
 
-	public function add_utilisateur(Utilisateur $user)
-	{
+    }
 
 
-    	$add_utilisateur = $this->db->prepare('INSERT INTO utilisateurs (pseudo, email, password) VALUES (:pseudo, :email, :password)');
+    public function add_utilisateur(Utilisateur $user)
+    {
 
-    	
+
+        $add_utilisateur = $this->db->prepare('INSERT INTO utilisateurs (pseudo, email, password) VALUES (:pseudo, :email, :password)');
+
+        
         $add_utilisateur->bindValue(':pseudo', $user->getPseudo());
         $add_utilisateur->bindValue(':email', $user->getEmail());
         $add_utilisateur->bindValue(':password', $user->getPassword());
@@ -38,7 +38,7 @@ class Utilisateur_Model
     }
 
     public function connect( Utilisateur $users)
-    {	
+    {    
         $userconect = $this->db->prepare('SELECT * FROM utilisateurs WHERE pseudo=:pseudo AND password=:password');
 
         $userconect->bindValue(':pseudo', $users->getPseudo());
@@ -46,37 +46,35 @@ class Utilisateur_Model
         $userconect->execute();
         
 
-        if($userconect->rowCount() == 1)
-        {	
-        	$result = $userconect->fetch(PDO::FETCH_ASSOC);
-        	
-        	return $result;
-			
+        if($userconect->rowCount() == 1) {    
+            $result = $userconect->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+            
         }
 
-			 return false;
+        return false;
 
 
     } 
 
     public function connect_admin( Utilisateur $users)
     {
-    	$userconect = $this->db->prepare('SELECT * FROM utilisateurs WHERE pseudo=:pseudo AND password=:password');
+        $userconect = $this->db->prepare('SELECT * FROM utilisateurs WHERE pseudo=:pseudo AND password=:password');
 
         $userconect->bindValue(':pseudo', $users->getPseudo());
         $userconect->bindValue(':password', $users->getPassword());
         $userconect->execute();
         
 
-        if($userconect->rowCount() == 1)
-        {	
-        	$result = $userconect->fetch(PDO::FETCH_ASSOC);
-        	
-        	return $result;
-			
+        if($userconect->rowCount() == 1) {    
+            $result = $userconect->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+            
         }
 
-			 return false;
+        return false;
     }   
 
 }

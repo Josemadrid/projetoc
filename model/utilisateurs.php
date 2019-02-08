@@ -10,17 +10,16 @@ class Utilisateur
     private $password;
     private $role;
 
-use Hydrate;
-// CONSTRUCTOR
+    use Hydrate;
+    // CONSTRUCTOR
     public function __construct($datas = [])
     {
-        if (!empty($datas))
-        {
+        if (!empty($datas)) {
             $this->hydrate($datas);
         }
     }
 
-// GETTERS
+    // GETTERS
     public function getId()
     {
         return $this->id;
@@ -45,7 +44,7 @@ use Hydrate;
         return $this->role;
     }
 
-// SETTERS
+    // SETTERS
     public function setId($id)
     {
         $this->id = $id;

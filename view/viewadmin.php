@@ -4,9 +4,9 @@ ob_start();
 
 <div class="container">
 <div class="row">
-	<div class="col-lg-8 col-lg-offset-2">
-		<br>
-		<h3 id="homeHeading">POSTS</h3>
+    <div class="col-lg-8 col-lg-offset-2">
+        <br>
+        <h3 id="homeHeading">POSTS</h3>
 <li class="page-scroll">
 
                         <a href="/projetoc/?action=addpost">CREER UN POST</a>
@@ -16,9 +16,9 @@ ob_start();
                         <a href="/projetoc/?action=listposts">LISTE DES POSTS</a>
                     </li>
                     <br>
-			<h3 id="homeHeading">COMMENTAIRES</h3>
-	
-	
+            <h3 id="homeHeading">COMMENTAIRES</h3>
+    
+    
 
 
 
@@ -27,31 +27,31 @@ ob_start();
         
     </div>
     <div class="row" id="commentPart">
-    	<div class="col-lg8 col-lg-offset-2">	
+        <div class="col-lg8 col-lg-offset-2">    
         <ul class="list-group">
             
-           <?php foreach ($comment as $comment): ?>
+            <?php foreach ($comment as $comment): ?>
             <li class="list-group-item item">
-                <strong> <?= $comment->getContenu_commentaire(); ?> || <em>Le <?= $comment->getDatecreation_commentaire(); ?></strong>
+                <strong> <?php echo  htmlspecialchars($comment->getContenu_commentaire()); ?> || <em>Le <?php echo htmlspecialchars($comment->getDatecreation_commentaire()); ?></strong>
                 <p class="text-right buttonAdmin">
-                    <a href="/projetoc/index.php?action=admin&adminaction=deletecomment&id=<?= $comment->getId() ?>">
+                    <a href="/projetoc/index.php?action=admin&adminaction=deletecomment&id=<?php echo htmlspecialchars($comment->getId()) ?>">
                         <button class="btn btn-danger">Supprimer</button>
                     </a>
-                    <a href="/projetoc/index.php?action=admin&adminaction=validcomment&id=<?= $comment->getId() ?>">
+                    <a href="/projetoc/index.php?action=admin&adminaction=validcomment&id=<?php echo htmlspecialchars($comment->getId()) ?>">
                         <button class="btn btn-success">Valider</button>
                     </a>
                 </p>
             </li>
-               <?php endforeach; ?>
+            <?php endforeach; ?>
           
         </ul>
         <a href="/projetoc/?action=admin&adminaction=viewscomment"><button class="btn btn-success">Voir Plus</button></a>
         </div>
     
 </div>
-		
+        
 
-		
+        
                         
                     
 </div>

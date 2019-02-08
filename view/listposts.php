@@ -20,9 +20,9 @@ ob_start();
                         <div class="caption">
                             <div class="caption-content">
 
-                                <a href="index.php?action=viewsinglepost&id=<?= $post->getId(); ?>"><h2><?= $post->getTitre(); ?></h2></a>
-                                  <p><?=$post->getChapo(); ?></p>
-                                 <p><em>Créé le <?= $post->getCreated_at(); ?>. Modifié le <?= $post->getUpdated_at(); ?>.</em></p>
+                                <a href="index.php?action=viewsinglepost&id=<?php echo htmlspecialchars($post->getId()); ?>"><h2><?php echo htmlspecialchars($post->getTitre()); ?></h2></a>
+                                  <p><?php echo htmlspecialchars($post->getChapo()); ?></p>
+                                 <p><em>Créé le <?php echo htmlspecialchars($post->getCreated_at()); ?>. Modifié le <?php echo htmlspecialchars($post->getUpdated_at()); ?>.</em></p>
                             </div>
                         </div>
                         

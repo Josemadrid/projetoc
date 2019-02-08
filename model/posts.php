@@ -14,18 +14,17 @@ class Posts
     private $updated_at;
 
     use Hydrate;
-// CONSTRUCTOR
+    // CONSTRUCTOR
     public function __construct($datas = [])
     {
-        if (!empty($datas))
-        {
+        if (!empty($datas)) {
             $this->hydrate($datas);
         }
     }
 
 
 
-// GETTERS
+    // GETTERS
     public function getId()
     {
         return $this->id;
@@ -61,7 +60,7 @@ class Posts
         return $this->updated_at;
     }
 
-// SETTERS
+    // SETTERS
     public function setId($id)
     {
         $this->id = (int)$id;

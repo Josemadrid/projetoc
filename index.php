@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * LE ROOTER QUI VA FAIRE TOUT LES COMPROVATION. 
+ * PHP VERSION 5.1
+ */
 require 'controller/home.php';
 require 'controller/listposts.php';
 require 'controller/posts_controller.php';
@@ -6,9 +11,8 @@ require 'controller/Utilisateur_controlleur.php';
 require 'vendor/autoload.php';
 require 'controller/Admin_controlleur.php';
 
-if(!isset($_SESSION))
-{
-	session_start();
+if (!isset($_SESSION)) {
+    session_start();
 }
 
 
@@ -18,280 +22,177 @@ $users = new Utilisateur();
 $instance = new Posts_Controller();
 $user_controlleur = new Utilisateur_Controlleur();
 
-try{
-	if(isset($_GET['action']))
-	{
-		if ($_GET['action'] == 'home')
-		{
-			home();
-		}
-		elseif ($_GET['action'] == 'mail')
-		{
-			
+try {
+    if (isset($_GET['action'])) {
 
-			if(isset($_POST['prenom']) && !empty(trim($_POST['prenom'])))
-			{ 
-				if(isset($_POST['email']) && !empty(trim($_POST['email'])))
-				{
-					if(isset($_POST['telephone']) && !empty(trim($_POST['telephone'])))
-						{
-							if(isset($_POST['message']) && !empty(trim($_POST['message'])))
-							{
-								email();
+        if ($_GET['action'] == 'home') {
+            $token = bin2hex(random_bytes(32));
+            home($token);
+        } elseif ($_GET['action'] == 'mail') {
 
-							}
-						}
-				}
-			}
-		}
-		
-		elseif ($_GET['action'] == 'addpost')
-		{
-			if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-				$instance->viewadd();
-			}
-				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
-				{
-				
-				
+            //On vérifie que tous les jetons sont là
+            if (isset($_SESSION['token']) AND isset($_POST['token'])
+                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+            ) {
 
-				if(isset($_POST['auteur']) && !empty(trim($_POST['auteur'])))
-				{ 
-					if(isset($_POST['titre']) && !empty(trim($_POST['titre'])))
-					{
-						if(isset($_POST['chapo']) && !empty(trim($_POST['chapo'])))
-							{
-								if(isset($_POST['contenu']) && !empty(trim($_POST['contenu'])))
-								{
+                // On vérifie que les deux correspondent
+                if ($_SESSION['token'] == $_POST['token']) {
 
-									$instance->add($_POST);
+                    if (isset($_POST['prenom']) && !empty(trim($_POST['prenom']))) {
+                        if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
+                            if (isset($_POST['telephone']) && !empty(trim($_POST['telephone']))) {
+                                if (isset($_POST['message']) && !empty(trim($_POST['message']))) {
+                                    email();
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    echo'erreur de validation';
+                }
+            } else {
+                echo'erreur de validation';
+            }
+        } elseif ($_GET['action'] == 'addpost') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $instance->viewadd();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-								}
-							}
-					}
-				}
-			}
-		}
+
+                if (isset($_POST['auteur']) && !empty(trim($_POST['auteur']))) {
+                    if (isset($_POST['titre']) && !empty(trim($_POST['titre']))) {
+                        if (isset($_POST['chapo']) && !empty(trim($_POST['chapo']))) {
+                            if (isset($_POST['contenu']) && !empty(trim($_POST['contenu']))) {
+
+                                $instance->add($_POST);
+                            }
+                        }
+                    }
+                }
+            }
+        } elseif ($_GET['action'] == 'listposts') {
+
+            $instance->listposts();
+        } elseif ($_GET['action'] == 'viewsinglepost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                $instance->viewpost($_GET['id']);
+            } else {
+                header('Location: /projetoc/?action=listposts');
+            }
+        } elseif ($_GET['action'] == 'editpost') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $instance->viewedit($_GET['id']);
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $instance->edit($_GET['id'], $_POST);
+                } else {
+                    header('Location: /projetoc/?action=listposts');
+                }
+            }
+        } elseif ($_GET['action'] == 'delete') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+                $instance->viewdelete($_GET['id']);
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $instance->delete($_GET['id'], $_POST);
+                } else {
+                    header('Location: /projetoc/?action=listposts');
+                }
+            }
+        } elseif ($_GET['action'] == 'connection') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $user_controlleur->viewconnection();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-		elseif ($_GET['action'] == 'listposts') 
-		{
-            
-                $instance->listposts();
+
+                if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))) {
+                    if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
+                        if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
+                            if (isset($_POST['confirmpassword']) && !empty(trim($_POST['confirmpassword']))) {
+
+                                $user_controlleur->inscription($_POST);
+                            }
+                        }
+                    }
+                }
+            } else {
+                header('Location: /projetoc/?action=connection');
+            }
+        } elseif ($_GET['action'] == 'connect') {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))) {
+                    if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
+                        $user_controlleur->connection($_POST);
+                    }
+                }
+            } else {
+                header('Location: /projetoc/?action=connection');
+            }
+        } elseif ($_GET['action'] == 'addcomment') {
+
+            if (isset($_SESSION['user'])) {
+
+
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+
+                    if (isset($_POST['postId']) && !empty(trim($_POST['postId']))) {
+                        if (isset($_POST['Message']) && !empty(trim($_POST['Message']))) {
+
+
+                            $admin_controlleur->add($_POST);
+                        }
+                    }
+                }
+            } else {
+
+
+                echo 'Vous devez vous connecter';
+            }
+        } elseif ($_GET['action'] == 'listcomment') {
+
+            $admin_controlleur->listcomment();
+        } elseif ($_GET['action'] == 'admin') {
+            if ($_SESSION['user']->getRole() == 2) {
+                if (isset($_GET['adminaction'])) {
+                    if ($_GET['adminaction'] == 'accueil') {
+                        $admin_controlleur->accueil();
+                    }
+                    if ($_GET['adminaction'] == 'viewadmin') {
+                        $admin_controlleur->viewadmin();
+                    }
+                    if ($_GET['adminaction'] == 'viewscomment') {
+                        $admin_controlleur->unvalidatedcomments();
+                    }
+                    if ($_GET['adminaction'] == 'validcomment') {
+                        if (isset($_GET['id']) && $_GET['id'] > 0) {
+                            $admin_controlleur->validcomment($_GET['id']);
+                        }
+                    }
+                    if ($_GET['adminaction'] == 'deletecomment') {
+                        if (isset($_GET['id']) && $_GET['id'] > 0) {
+                            $admin_controlleur->deletecomment($_GET['id']);
+                        }
+                    }
+                }
+            } else {
+                header('Location: /projetoc/?action=connection');
+            }
         }
+    } else {
 
-        
-    
-        elseif ($_GET['action'] == 'viewsinglepost')
-		{
-			if (isset($_GET['id']) && $_GET['id'] > 0)
-			{
-				
-				$instance->viewpost($_GET['id']);
-			}
-			
-			else{
-				header('Location: /projetoc/?action=listposts');
-			}
-		}
-
-
-		elseif ($_GET['action'] == 'editpost')
-		{
-			if ($_SERVER['REQUEST_METHOD'] == 'GET')
-			{
-				$instance->viewedit($_GET['id']);
-			}
-			elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
-			{
-			if (isset($_GET['id']) && $_GET['id'] > 0)
-			{
-				
-				$instance->edit($_GET['id'], $_POST);
-			}
-			else
-			{
-				header('Location: /projetoc/?action=listposts');
-			}
-			}
-		}
-		elseif ($_GET['action'] == 'delete')
-		{
-			if ($_SERVER['REQUEST_METHOD'] == 'GET')
-			{
-				
-				$instance->viewdelete($_GET['id']);
-			}
-			elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
-			{
-			if (isset($_GET['id']) && $_GET['id'] > 0)
-			{
-				
-				$instance->delete($_GET['id'], $_POST);
-			}
-			else
-			{
-				header('Location: /projetoc/?action=listposts');
-			}
-			}
-		}
-		elseif ($_GET['action'] == 'connection')
-		{
-			if ($_SERVER['REQUEST_METHOD'] == 'GET')
-			{
-				$user_controlleur->viewconnection();
-			}
-				elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
-				{
-				
-				
-
-					if(isset($_POST['pseudo']) && !empty(trim($_POST['pseudo'])))
-					{ 
-						if(isset($_POST['email']) && !empty(trim($_POST['email'])))
-						{
-							if(isset($_POST['password']) && !empty(trim($_POST['password'])))
-								{
-									if(isset($_POST['confirmpassword']) && !empty(trim($_POST['confirmpassword'])))
-									{
-
-										$user_controlleur->inscription($_POST);
-									}
-								}
-						}
-					}
-				}					
-			else
-			{
-				header('Location: /projetoc/?action=connection');
-			}
-		}
-		elseif ($_GET['action'] == 'connect')
-		{
-		   if($_SERVER['REQUEST_METHOD'] == 'POST')
-		   {
-		   	if(isset($_POST['pseudo']) && !empty(trim($_POST['pseudo'])))
-		   	{
-		   		if(isset($_POST['password']) && !empty(trim($_POST['password'])))
-		   		{
-		   			$user_controlleur->connection($_POST);
-		   		}
-		   	}
-
-		   }
-		   else
-		   {
-		   	header('Location: /projetoc/?action=connection');
-		   }
-
-		   
-		}
-
-
-		
-
-		elseif ($_GET['action'] == 'addcomment')
-		{
-			
-			if (isset($_SESSION['user']))
-            {
-            	
-            
-				if ($_SERVER['REQUEST_METHOD'] == 'POST')
-				{
-				
-				
-
-					if(isset($_POST['postId']) && !empty(trim($_POST['postId'])))
-					{ 
-						if(isset($_POST['Message']) && !empty(trim($_POST['Message'])))
-						{
-						
-
-									$admin_controlleur->add($_POST);
-
-
-						}		
-							
-					}   
-				}
-			}
-			else
-			{
-				
-            	
-            	echo 'Vous devez vous connecter';
-            
-			}
-		}
-
-		elseif ($_GET['action'] == 'listcomment') 
-		{
-            
-                $admin_controlleur->listcomment();
-        }
-
-		elseif ($_GET['action'] == 'admin')
-		{
-		   if($_SESSION['user']->getRole() == 2)
-		   {
-		   		if(isset($_GET['adminaction']))
-		   		{
-		   			if($_GET['adminaction'] == 'accueil')
-		   			{
-		   				$admin_controlleur->accueil();
-		   			}
-		   			if($_GET['adminaction'] == 'viewadmin')
-		   			{
-		   				$admin_controlleur->viewadmin();
-		   			}
-		   			if($_GET['adminaction'] == 'viewscomment')
-		   			{
-		   				$admin_controlleur->unvalidatedcomments();
-		   			}
-		   			if($_GET['adminaction'] == 'validcomment')
-		   			{
-		   				if(isset($_GET['id']) && $_GET['id'] > 0)
-		   				{
-		   					$admin_controlleur->validcomment($_GET['id']);
-		   				}
-		   				
-		   			}
-		   			if($_GET['adminaction'] == 'deletecomment')
-		   			{
-		   				if(isset($_GET['id']) && $_GET['id'] > 0)
-		   				{
-		   					$admin_controlleur->deletecomment($_GET['id']);
-		   				}
-		   				
-		   			}
-		   		}
-
-		   }
-		   
-
-	    
-		   else
-		   {
-		   	header('Location: /projetoc/?action=connection');
-		   }
-
-		   
-		}
-
-
-	}
-else {
-	
-		require 'view/accueil.php';
-		
-	}
-
-}
-catch(Exception $e)
-{
-	echo $e->getMessage();
+        $token = bin2hex(random_bytes(32));
+            home($token);
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 
