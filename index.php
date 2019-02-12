@@ -1,8 +1,16 @@
 <?php
 
 /**
- * LE ROOTER QUI VA FAIRE TOUT LES COMPROVATION. 
- * PHP VERSION 5.1
+ * ROOTEUR.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 require 'controller/home.php';
 require 'controller/listposts.php';
@@ -26,22 +34,31 @@ try {
     if (isset($_GET['action'])) {
 
         if ($_GET['action'] == 'home') {
+
             $token = bin2hex(random_bytes(32));
             home($token);
         } elseif ($_GET['action'] == 'mail') {
 
             //On vérifie que tous les jetons sont là
             if (isset($_SESSION['token']) AND isset($_POST['token'])
-                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
             ) {
 
                 // On vérifie que les deux correspondent
                 if ($_SESSION['token'] == $_POST['token']) {
 
-                    if (isset($_POST['prenom']) && !empty(trim($_POST['prenom']))) {
-                        if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
-                            if (isset($_POST['telephone']) && !empty(trim($_POST['telephone']))) {
-                                if (isset($_POST['message']) && !empty(trim($_POST['message']))) {
+                    if (isset($_POST['prenom'])  
+                        && !empty(trim($_POST['prenom']))
+                    ) {
+                        if (isset($_POST['email'])  
+                            && !empty(trim($_POST['email']))
+                        ) {
+                            if (isset($_POST['telephone'])  
+                                && !empty(trim($_POST['telephone']))
+                            ) {
+                                if (isset($_POST['message'])  
+                                    && !empty(trim($_POST['message']))
+                                ) {
                                     email();
                                 }
                             }
@@ -55,20 +72,42 @@ try {
             }
         } elseif ($_GET['action'] == 'addpost') {
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $instance->viewadd();
+                $token = bin2hex(random_bytes(32));
+                $instance->viewadd($token);
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+                if (isset($_SESSION['token']) AND isset($_POST['token'])
+                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                ) {
 
 
-                if (isset($_POST['auteur']) && !empty(trim($_POST['auteur']))) {
-                    if (isset($_POST['titre']) && !empty(trim($_POST['titre']))) {
-                        if (isset($_POST['chapo']) && !empty(trim($_POST['chapo']))) {
-                            if (isset($_POST['contenu']) && !empty(trim($_POST['contenu']))) {
+                    if ($_SESSION['token'] == $_POST['token']) {
 
-                                $instance->add($_POST);
+
+
+                        if (isset($_POST['auteur'])  
+                            && !empty(trim($_POST['auteur']))
+                        ) {
+                            if (isset($_POST['titre'])  
+                                && !empty(trim($_POST['titre']))
+                            ) {
+                                if (isset($_POST['chapo'])  
+                                    && !empty(trim($_POST['chapo']))
+                                ) {
+                                    if (isset($_POST['contenu']) 
+                                        && !empty(trim($_POST['contenu']))
+                                    ) {
+
+                                        $instance->add($_POST);
+                                    }
+                                }
                             }
                         }
+                    } else {
+                        echo'erreur de validation';
                     }
+                } else {
+                    echo'erreur de validation';
                 }
             }
         } elseif ($_GET['action'] == 'listposts') {
@@ -76,8 +115,8 @@ try {
             $instance->listposts();
         } elseif ($_GET['action'] == 'viewsinglepost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-
-                $instance->viewpost($_GET['id']);
+                $token = bin2hex(random_bytes(32));
+                $instance->viewpost($_GET['id'], $token);
             } else {
                 header('Location: /projetoc/?action=listposts');
             }
@@ -106,28 +145,57 @@ try {
             }
         } elseif ($_GET['action'] == 'connection') {
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $user_controlleur->viewconnection();
+                $token = bin2hex(random_bytes(32));
+                $user_controlleur->viewconnection($token);
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
+                if (isset($_SESSION['token']) AND isset($_POST['token'])
+                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                ) {
 
-                if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))) {
-                    if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
-                        if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
-                            if (isset($_POST['confirmpassword']) && !empty(trim($_POST['confirmpassword']))) {
 
-                                $user_controlleur->inscription($_POST);
+                    if ($_SESSION['token'] == $_POST['token']) {
+
+
+
+                        if (isset($_POST['pseudo'])  
+                            && !empty(trim($_POST['pseudo']))
+                        ) {
+                            if (isset($_POST['email']) 
+                                && !empty(trim($_POST['email']))
+                            ) {
+                                if (isset($_POST['password']) 
+                                    && !empty(trim($_POST['password']))
+                                ) {
+                                    if (isset($_POST['confirmpassword']) 
+                                        && !empty(trim($_POST['confirmpassword']))
+                                    ) {
+
+                                        $user_controlleur->inscription($_POST);
+                                    }
+                                }
                             }
                         }
+                    } else {
+                        echo'erreur de validation';
                     }
+                } else {
+                    echo'erreur de validation';
                 }
             } else {
                 header('Location: /projetoc/?action=connection');
             }
         } elseif ($_GET['action'] == 'connect') {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))) {
-                    if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
+                $token = bin2hex(random_bytes(32));
+
+                if (isset($_POST['pseudo'])  
+                    && !empty(trim($_POST['pseudo']))
+                ) {
+                    if (isset($_POST['password'])  
+                        && !empty(trim($_POST['password']))
+                    ) {
                         $user_controlleur->connection($_POST);
                     }
                 }
@@ -140,21 +208,37 @@ try {
 
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                   
+
+                    if (isset($_SESSION['token']) AND isset($_POST['token'])
+                        AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                    ) {
+
+
+                        if ($_SESSION['token'] == $_POST['token']) {
 
 
 
-                    if (isset($_POST['postId']) && !empty(trim($_POST['postId']))) {
-                        if (isset($_POST['Message']) && !empty(trim($_POST['Message']))) {
+                            if (isset($_POST['postId'])  
+                                && !empty(trim($_POST['postId']))
+                            ) {
+                                if (isset($_POST['Message'])  
+                                    && !empty(trim($_POST['Message']))
+                                ) {
 
 
-                            $admin_controlleur->add($_POST);
+                                    $admin_controlleur->add($_POST);
+                                }
+                            }
+                        } else {
+                            echo'erreur de validation';
                         }
+                    } else {
+                        echo'erreur de validation';
                     }
+                } else {
+                    echo 'Vous devez vous connecter';
                 }
-            } else {
-
-
-                echo 'Vous devez vous connecter';
             }
         } elseif ($_GET['action'] == 'listcomment') {
 
@@ -189,7 +273,7 @@ try {
     } else {
 
         $token = bin2hex(random_bytes(32));
-            home($token);
+        home($token);
     }
 } catch (Exception $e) {
     echo $e->getMessage();

@@ -1,4 +1,16 @@
 <?php 
+/**
+ * VIEW ADMIN.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
+ */
 ob_start();
 ?>
 
@@ -32,12 +44,20 @@ ob_start();
             
             <?php foreach ($comment as $comment): ?>
             <li class="list-group-item item">
-                <strong> <?php echo  htmlspecialchars($comment->getContenu_commentaire()); ?> || <em>Le <?php echo htmlspecialchars($comment->getDatecreation_commentaire()); ?></strong>
+                <strong> <?php echo  
+                htmlspecialchars($comment->getContenu_commentaire()); ?>
+                    || <em>Le <?php echo 
+                    htmlspecialchars($comment->getDatecreation_commentaire()); ?>
+                </strong>
                 <p class="text-right buttonAdmin">
-                    <a href="/projetoc/index.php?action=admin&adminaction=deletecomment&id=<?php echo htmlspecialchars($comment->getId()) ?>">
+                    <a href="/projetoc/index.php?action=admin&adminaction=
+                       deletecomment&id=
+                        <?php echo htmlspecialchars($comment->getId()) ?>">
                         <button class="btn btn-danger">Supprimer</button>
                     </a>
-                    <a href="/projetoc/index.php?action=admin&adminaction=validcomment&id=<?php echo htmlspecialchars($comment->getId()) ?>">
+                    <a href="/projetoc/index.php?action=admin&adminaction=
+                       validcomment&id=<?php echo 
+                        htmlspecialchars($comment->getId()) ?>">
                         <button class="btn btn-success">Valider</button>
                     </a>
                 </p>
@@ -45,7 +65,8 @@ ob_start();
             <?php endforeach; ?>
           
         </ul>
-        <a href="/projetoc/?action=admin&adminaction=viewscomment"><button class="btn btn-success">Voir Plus</button></a>
+        <a href="/projetoc/?action=admin&adminaction=viewscomment">
+            <button class="btn btn-success">Voir Plus</button></a>
         </div>
     
 </div>

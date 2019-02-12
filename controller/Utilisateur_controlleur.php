@@ -1,7 +1,15 @@
 <?php
 /**
- * CONTROLLEUR QUI VA PERMETRE DE GERER LES UTILISATEURS. 
- * PHP VERSION 5.1
+ * CONTROLLEUR POUR UTILISATEUR.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 require_once 'model/conection_db.php';
 require_once 'model/utilisateur_model.php';
@@ -9,9 +17,14 @@ require_once  'model/utilisateurs.php';
 
 
 /**
- * CLASS QUI VA PERMETRE DE GERER LES UTILISATEURS.
+ * Controller utilisateur class
  *
- * @return void
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 class Utilisateur_Controlleur
 {
@@ -32,16 +45,19 @@ class Utilisateur_Controlleur
     /**
      * Permit to get view inscription or connect
      *
+     * @param array $token sécurité CSRF
+     * 
      * @return void
      */
-    public function viewconnection()
+    public function viewconnection($token)
     {
+        $_SESSION['token'] = $token;
         include 'view/viewinscription.php';
     }
     /**
      * Permit add users
      * 
-     * @param array $user entité
+     * @param array $user contien les données des utilisateurs
      * 
      * @return void
      */
@@ -74,7 +90,8 @@ class Utilisateur_Controlleur
     /**
      * Permit to connection users
      *
-     * @param  array $users entité
+     * @param array $users recupére les données des utilisateurs
+     * 
      * @return void
      */
     public function connection(array $users)
@@ -105,12 +122,12 @@ class Utilisateur_Controlleur
             }
                 
 
-        }
-            
-        else {
+        } else {
             
             header('Location: /projetoc/?action=connection');
         }
+            
+        
 
 
     

@@ -1,7 +1,15 @@
 <?php
 /**
- * CONTROLLEUR QUI VA PERMETRE DE VOIR TOUT LES POST. 
- * PHP VERSION 5.1
+ * CONTROLLEUR POUR LISTPOST.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 
 /**

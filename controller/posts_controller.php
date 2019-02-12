@@ -1,8 +1,16 @@
 <?php
 
 /**
- * CONTROLLEUR QUI VA PERMETRE DE GERER LES POSTS. 
- * PHP VERSION 5.1
+ * CONTROLLEUR POUR LES POST.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 require_once 'model/conection_db.php';
 require_once 'model/posts_model.php';
@@ -11,9 +19,14 @@ require_once 'model/commentaire_model.php';
 require_once  'model/commentaires.php';
 
 /**
- * CLASS QUI VA PERMETRE DE GERER LES POSTS.
+ * Controller Posts class
  *
- * @return void
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 class Posts_Controller
 {
@@ -36,7 +49,7 @@ class Posts_Controller
     /**
      * Permit to add post
      *
-     * @param array $posts entité
+     * @param array $posts garde les données des posts
      * 
      * @return void
      */
@@ -62,11 +75,14 @@ class Posts_Controller
     }
     /**
      * Permit to get view new post
-     *
+     * 
+     * @param array $token sécurité CSRF
+     * 
      * @return void
      */
-    public function viewadd()
+    public function viewadd($token)
     {
+        $_SESSION['token'] = $token;
         include 'view/creerpost.php';
     }
 
@@ -74,12 +90,16 @@ class Posts_Controller
     /**
      * Permit to get 1 post
      *
-     * @param int $id indentifian du post
+     * @param int   $id    indentifian du post
+     * @param array $token sécurité CSRF
      * 
      * @return void
      */
-    public function viewpost($id)
+    public function viewpost(int $id, $token)
     {
+        
+         $_SESSION['token'] = $token;
+         
         $post = $this->manager->getPost($id);
 
         $comment = $this->comment->getComment($id);
@@ -102,7 +122,8 @@ class Posts_Controller
     /**
      * Permit to modify post
      * 
-     * @param int $id entité
+     * @param int   $id    identifient du post
+     * @param array $posts données du post
      *
      * @return void
      */
@@ -132,11 +153,11 @@ class Posts_Controller
     /**
      * Permit to modify post
      *
-     * @param int $id entité
+     * @param int $id identifient du post
      * 
      * @return void
      */
-    public function viewedit($id)
+    public function viewedit(int $id)
     {
         $post = $this->manager->getPost($id);
         include 'view/editview.php';
@@ -144,11 +165,11 @@ class Posts_Controller
     /**
      * Permit to get view delete post
      *
-     * @param int $id entité
+     * @param int $id identifient du post
      * 
      * @return void
      */
-    public function viewdelete($id)
+    public function viewdelete(int $id)
     {
         $post = $this->manager->getPost($id);
         include 'view/viewdelete.php';
@@ -156,11 +177,11 @@ class Posts_Controller
     /**
      * Permit to delete post
      *
-     * @param int $id entité
+     * @param int $id identifient du post
      * 
      * @return void
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         
         

@@ -52,7 +52,7 @@ class AdminControlleur
     /**
      * Permit add comment
      * 
-     * @param array $comment entité
+     * @param array $comment les données du commentaire
      * 
      * @return void
      */
@@ -118,11 +118,11 @@ class AdminControlleur
     /**
      * Permit to valid a comment
      * 
-     * @param int $id entité
+     * @param int $id identifient du commentaire
      * 
      * @return void
      */
-    public function validcomment($id)
+    public function validcomment(int $id)
     {
         
         if ($this->admin->ifexist($id)) {
@@ -136,11 +136,11 @@ class AdminControlleur
     /**
      * Permit to delete a comment
      * 
-     * @param int $id entité
+     * @param int $id identifient du commentaire
      * 
      * @return void
      */
-    public function deletecomment($id)
+    public function deletecomment(int $id)
     {
         if ($this->admin->ifexist($id)) {
             $this->admin->delete($id);

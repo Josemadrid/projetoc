@@ -1,7 +1,15 @@
 <?php 
 /**
- * CONTROLLEUR QUI VA PERMETRE DE ME CONTACTER. 
- * PHP VERSION 5.1
+ * CONTROLLEUR POUR ACCUEIL.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -9,6 +17,8 @@ use PHPMailer\PHPMailer\Exception;
  /**
   * Permit to get view accueil
   *
+  * @param array $token sécurité CSRF
+  * 
   * @return void
   */
 function home($token)

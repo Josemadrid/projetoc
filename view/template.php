@@ -4,44 +4,51 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, 
+          initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Mon blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="public/themes/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/themes/vendor/bootstrap/css/bootstrap.min.css" 
+          rel="stylesheet">
 
     <!-- Theme CSS -->
     <link href="public/themes/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="public/themes/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="public/themes/vendor/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+          rel="stylesheet" type="text/css">
+    <link 
+        href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,
+        700italic" 
+          rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
 
 </head>
     <body>
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <nav id="mainNav" 
+             class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                <button type="button" class="navbar-toggle" 
+                        data-toggle="collapse" 
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="#page-top">MON BLOG</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" 
+                 id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="page-scroll">
                         <a href="#page-top"></a>
@@ -62,6 +69,18 @@
                    
                     
                         <?php 
+                        /**
+                         * TEMPLATE MENU.
+                         * 
+                         * PHP version 7.2.4
+                         * 
+                         * @category Controlleur
+                         * @package  Controlleur
+                         * @author   Name <mail@mail.com>
+                         * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+                         * @version  GIT: Release: 1.0.0
+                         * @link     URL Documentation
+                         */
 
                         if(isset($_SESSION['user'])) { ?>
                                 <li class="page-scroll">
@@ -70,18 +89,23 @@
                                 if($_SESSION['user']->getRole() == 2) {
                                     echo 'Bienvenue Patron';
                                     ?></a></li><li class="page-scroll">
-                                   <a style="color:red" href="/projetoc/?action=admin&adminaction=viewadmin">ADMIN</a>
+                                   <a style="color:red" 
+                                      href="/projetoc/?action=admin&adminaction
+                                      =viewadmin">
+                                       ADMIN</a>
                                       </li><?php
                                 }
                                 else
                                 {
-                                    echo 'Bienvenue    ' . htmlspecialchars($_SESSION['user']->getPseudo());
+                                    echo 'Bienvenue    ' . 
+                                    htmlspecialchars($_SESSION['user']->getPseudo());
                                 }
                                 ?>
                                 </a>
                               </li>
                               <li class="page-scroll">
-                        <a style="color:black" href="/projetoc/deconnection.php">Deconnexion</a>
+                        <a style="color:black" 
+                           href="/projetoc/deconnection.php">Deconnexion</a>
                     </li>
                     
                               <?php
@@ -133,25 +157,33 @@
                             <br>Roquebrune cap martin, CP 06190</p>
                     </div>
                     <div class="footer-col col-md-6">
-                        <h3 class="section-heading">Autres contacts & réseaux sociaux</h3>
+                        <h3 class="section-heading">
+                            Autres contacts & réseaux sociaux</h3>
                     
                     
                 
                 <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="glyphicon glyphicon-envelope fa-3x sr-contact"></i>
-                    <p><a href="mailto:josemadridgil90@gmail.com">Voir mon Email</a></p>
+                    <i class="glyphicon glyphicon-envelope 
+                       fa-3x sr-contact"></i>
+                    <p><a href="mailto:josemadridgil90@gmail.com">
+                            Voir mon Email</a></p>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <i class="glyphicon glyphicon-education fa-3x sr-contact"></i>
-                    <p><a href="public/themes/img/cv.pdf" target="_blank">Voir mon CV</a></p>
+                    <i class="glyphicon glyphicon-education fa-3x 
+                       sr-contact"></i>
+                    <p><a href="public/themes/img/cv.pdf" target="_blank">
+                            Voir mon CV</a></p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa-3x sr-contact"><img src="" alt=""></i>
-                    <p><a href="https://github.com/Josemadrid" target="_blank">Voir mon GitHub</a></p>
+                    <p><a href="https://github.com/Josemadrid" target="_blank">
+                            Voir mon GitHub</a></p>
                 </div>
                 <div class="col-lg-6 text-center">
                     <i class="fa-3x sr-contact"><img src="" alt=""></i>
-                    <p><a href="https://openclassrooms.facebook.com/profile.php?id=100025253353466" target="_blank">Voir mon Workplace</a></p>
+                    <p><a href="https://openclassrooms.facebook.com/
+                          profile.php?id=100025253353466"
+                          target="_blank">Voir mon Workplace</a></p>
                 </div>
                     
                 </div>
@@ -168,8 +200,9 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    
+    <div class="scroll-top page-scroll hidden-sm hidden-xs 
+         hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
@@ -184,7 +217,8 @@
     <script src="public/themes/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/
+    jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
     <script src="public/themes/js/jqBootstrapValidation.js"></script>

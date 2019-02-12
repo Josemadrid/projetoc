@@ -1,4 +1,16 @@
 <?php
+/**
+ * VIEW CREER POST.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
+ */
 ob_start();
 ?>
 <br>
@@ -10,25 +22,32 @@ ob_start();
     <form class="form" role="form" action="index.php?action=addpost" method="post">
       <div class="form-group">
         <label for="author">Auteur :</label>
-        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Auteur" required>
+        <input type="text" class="form-control" id="auteur" 
+               name="auteur" placeholder="Auteur" required>
       </div>
       <div class="form-group">
         <label for="title">Titre :</label>
-        <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre" required>
+        <input type="text" class="form-control" id="titre" 
+               name="titre" placeholder="Titre" required>
       </div>
       <div class="form-group">
         <label for="chapo">Chapô :</label>
-        <textarea type="text" class="form-control" id="chapo" name="chapo" placeholder="Chapô de l'article" rows="8" required></textarea>
+        <textarea type="text" class="form-control" id="chapo" 
+                  name="chapo" placeholder="Chapô de l'article" 
+                  rows="8" required></textarea>
       </div>
       <div class="form-group">
         <label for="content">Contenu :</label>
-        <textarea type="text" class="form-control" id="contenu" name="contenu" placeholder="Contenu de l'article" rows="25" required></textarea>
+        <textarea type="text" class="form-control" id="contenu" 
+                  name="contenu" placeholder="Contenu de l'article" 
+                  rows="25" required></textarea>
       </div>
       <br>
       <div class="form-actions">
         <button type="submit" class="btn btn-success">Ajouter</button>
         <a class="btn btn-primary" href="index.php?action=home">Retour</a>
       </div>
+      <input type="hidden" name="token" id="token" value="<?php echo $token; ?>" />
     </form>
   </div>
 </div>

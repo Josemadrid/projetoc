@@ -1,14 +1,28 @@
 <?php
 /**
- * MODEL QUI VA FAIRE LES REQUETES SLQ SUR LES COMMENTAIRES. 
- * PHP VERSION 5.1
+ * MODEL POUR LES COMMENTAIRE.
+ * 
+ * PHP version 7.2.4
+ * 
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 require_once 'conection_db.php';
 require_once 'model/utilisateurs.php';
 
 /**
- * CLASS QUI VA FAIRE LES REQUETES SLQ SUR LES COMMENTAIRES. 
- * PHP VERSION 5.1
+ * Model Commentaire class
+ *
+ * @category Controlleur
+ * @package  Controlleur
+ * @author   Name <mail@mail.com>
+ * @license  https://fr.wikipedia.org/wiki/Licence_MIT 
+ * @version  GIT: Release: 1.0.0
+ * @link     URL Documentation
  */
 class Commentaire_Model
 {
@@ -35,11 +49,11 @@ class Commentaire_Model
     /**
      * Permit add comment
      * 
-     * @param string $comment entité
+     * @param string $comment données du comment
      * 
      * @return boolean
      */
-    public function add_comment(Commentaire $comment): bool
+    public function addcomment(Commentaire $comment): bool
     {
 
         
@@ -63,7 +77,7 @@ class Commentaire_Model
     /**
      * Permit get comment
      * 
-     * @param int $id identifiant du post
+     * @param int $id identifiant du commentaire
      * 
      * @return array
      */
@@ -95,7 +109,7 @@ class Commentaire_Model
     /**
      * Permit get unvalidated comments
      *
-     * @return $comment
+     * @return array
      */
     public function getUnvalidated()
     {
@@ -139,7 +153,7 @@ class Commentaire_Model
     /**
      * Permit validated comment
      * 
-     * @param int $id entité
+     * @param int $id identifient commentaire
      * 
      * @return line affected
      */
@@ -156,7 +170,7 @@ class Commentaire_Model
     /**
      * Permit see a comment only if exist
      * 
-     * @param int $id entité
+     * @param int $id identifient commentaire
      * 
      * @return line affected
      */
@@ -170,11 +184,11 @@ class Commentaire_Model
     /**
      * Permit delete comment
      * 
-     * @param int $id entité
+     * @param int $id identifient commentaire
      * 
      * @return bool
      */
-    public function delete($id)
+    public function delete(int $id): bool
     {
         $request = $this->db->prepare('DELETE  FROM commentaires WHERE id = :id');
      
