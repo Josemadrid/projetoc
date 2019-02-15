@@ -66,13 +66,13 @@ class AdminControlleur
             $datas['contenuCommentaire'] = $comment['Message'];
             $datas['postId'] = $comment['postId'];
             $datas['UtilisateurId'] = $_SESSION['user']->getId();
-            var_dump($_SESSION);
+            
             
             
             
 
             $comment = new Commentaire($datas);
-            var_dump($comment);
+            
             
             
             $result = $this->admin->addcomment($comment);
