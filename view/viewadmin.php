@@ -45,18 +45,16 @@ ob_start();
             <?php foreach ($comment as $comment): ?>
             <li class="list-group-item item">
                 <strong> <?php echo  
-                htmlspecialchars($comment->getContenu_commentaire()); ?>
+                htmlspecialchars($comment->getContenuCommentaire()); ?>
                     || <em>Le <?php echo 
-                    htmlspecialchars($comment->getDatecreation_commentaire()); ?>
+                    htmlspecialchars($comment->getDatecreationCommentaire()); ?>
                 </strong>
                 <p class="text-right buttonAdmin">
-                    <a href="/projetoc/index.php?action=admin&adminaction=
-                       deletecomment&id=
-                        <?php echo htmlspecialchars($comment->getId()) ?>">
+                    <a href="/projetoc/index.php?action=admin&adminaction=deletecomment&id=<?php echo htmlspecialchars($comment->getId()) ?>">
+                        
                         <button class="btn btn-danger">Supprimer</button>
                     </a>
-                    <a href="/projetoc/index.php?action=admin&adminaction=
-                       validcomment&id=<?php echo 
+                    <a href="/projetoc/index.php?action=admin&adminaction=validcomment&id=<?php echo 
                         htmlspecialchars($comment->getId()) ?>">
                         <button class="btn btn-success">Valider</button>
                     </a>

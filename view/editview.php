@@ -19,8 +19,7 @@ ob_start();
 <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                   <h3 id="homeHeading">Modifie le Post</h3>
-    <form class="form" role="form" action="index.php?action=editpost&id=
-        <?php echo htmlspecialchars($post->getId());?>" method="post">
+    <form class="form" role="form" action="index.php?action=editpost&id=<?php echo htmlspecialchars($post->getId());?>" method="post">
       <div class="form-group">
         <label for="author">Auteur :</label>
         <input type="text" class="form-control" id="auteur" name="auteur"
@@ -54,8 +53,7 @@ ob_start();
           <input type="hidden" id="id" name="id" 
                  value="<?php echo htmlspecialchars($post->getId()); ?>">
         <button type="submit" name="edit" class="btn btn-success">Modifier</button>
-                <a class="btn btn-primary" href="index.php?action=viewsinglepost&id=
-                    <?php echo htmlspecialchars($post->getId());?>">Retour</a>
+                <a class="btn btn-primary" href="index.php?action=viewsinglepost&id= <?php echo htmlspecialchars($post->getId());?>">Retour</a>
       </div>
       
     </form>

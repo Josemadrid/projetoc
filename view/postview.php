@@ -27,24 +27,22 @@ ob_start();
         <p><?php echo htmlspecialchars($post->getContenu()); ?></p>
                 <p><em>Ecrit par <?php echo 
                 htmlspecialchars($post->getAuteur()); ?>, le 
-                    <?php echo htmlspecialchars($post->getCreated_at()); ?>
+                    <?php echo htmlspecialchars($post->getCreatedAt()); ?>
                 . Modifié le <?php echo 
-                htmlspecialchars($post->getUpdated_at()); ?>.</em></p>
+                htmlspecialchars($post->getUpdatedAt()); ?>.</em></p>
 
     <?php
-    if(isset($_SESSION['user'])) { if($_SESSION['user']->getRole() == 2) { ?> 
+    if (isset($_SESSION['user'])) { 
+        if ($_SESSION['user']->getRole() == 2) { 
+            ?> 
                 <a class='btn btn-success' 
-                                       href="index.php?action=editpost&id= 
-                                           <?php echo 
-                                            htmlspecialchars($post->getId()) ?> ">
+                                       href="index.php?action=editpost&id= <?php echo htmlspecialchars($post->getId()) ?> ">
                                         Modifier</a>
                                     <a class='btn btn-danger' 
-                                       href="index.php?action=delete&id= 
-                                           <?php echo 
-                                            htmlspecialchars($post->getId())?>  ">
+                                       href="index.php?action=delete&id= <?php echo htmlspecialchars($post->getId())?>  ">
                                         Supprimer</a>
 
-    <?php    }
+        <?php    }
 
     }?>
                             
@@ -57,18 +55,19 @@ ob_start();
         <h3 style="color:blue"><?php echo
         htmlspecialchars($comment->getUtilisateur()->getPseudo()); ?></h2>
         <p style="color:green"><strong><?php echo 
-        htmlspecialchars($comment->getContenu_commentaire()); ?></strong></p>
+        htmlspecialchars($comment->getContenuCommentaire()); ?></strong></p>
         <p><em>Le <?php echo 
-        htmlspecialchars($comment->getDatecreation_commentaire()); ?>
+        htmlspecialchars($comment->getDatecreationCommentaire()); ?>
                 . Modifié le <?php echo 
-                htmlspecialchars($comment->getDatemodification_commentaire()); ?>.
+                htmlspecialchars($comment->getDatemodificationCommentaire()); ?>.
             </em></p>
 
     <?php endforeach; ?>
 
 
 <?php
-if(isset($_SESSION['user'])) {?>
+if (isset($_SESSION['user'])) {
+    ?>
 
 
 <div class="row">

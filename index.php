@@ -40,8 +40,8 @@ try {
         } elseif ($_GET['action'] == 'mail') {
 
             //On vérifie que tous les jetons sont là
-            if (isset($_SESSION['token']) AND isset($_POST['token'])
-                AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+            if (isset($_SESSION['token']) && isset($_POST['token'])
+                && ! empty($_SESSION['token']) && ! empty($_POST['token'])
             ) {
 
                 // On vérifie que les deux correspondent
@@ -76,8 +76,8 @@ try {
                 $instance->viewadd($token);
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                if (isset($_SESSION['token']) AND isset($_POST['token'])
-                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                if (isset($_SESSION['token']) && isset($_POST['token'])
+                    && ! empty($_SESSION['token']) && ! empty($_POST['token'])
                 ) {
 
 
@@ -150,8 +150,8 @@ try {
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-                if (isset($_SESSION['token']) AND isset($_POST['token'])
-                    AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                if (isset($_SESSION['token']) && isset($_POST['token'])
+                    && ! empty($_SESSION['token']) && ! empty($_POST['token'])
                 ) {
 
 
@@ -210,8 +210,8 @@ try {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    
 
-                    if (isset($_SESSION['token']) AND isset($_POST['token'])
-                        AND ! empty($_SESSION['token']) AND ! empty($_POST['token'])
+                    if (isset($_SESSION['token']) && isset($_POST['token'])
+                        && ! empty($_SESSION['token']) && ! empty($_POST['token'])
                     ) {
 
 

@@ -82,21 +82,20 @@
                          * @link     URL Documentation
                          */
 
-                        if(isset($_SESSION['user'])) { ?>
+                        if (isset($_SESSION['user'])) { 
+                            ?>
                                 <li class="page-scroll">
                                  <a style="color:red"> 
                                 <?php
-                                if($_SESSION['user']->getRole() == 2) {
+                                if ($_SESSION['user']->getRole() == 2) {
                                     echo 'Bienvenue Patron';
                                     ?></a></li><li class="page-scroll">
                                    <a style="color:red" 
-                                      href="/projetoc/?action=admin&adminaction
-                                      =viewadmin">
-                                       ADMIN</a>
+                                      href="/projetoc/?action=admin&adminaction=viewadmin">ADMIN</a>
+                                       
                                       </li><?php
-                                }
-                                else
-                                {
+                                } else {
+                                
                                     echo 'Bienvenue    ' . 
                                     htmlspecialchars($_SESSION['user']->getPseudo());
                                 }

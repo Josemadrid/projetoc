@@ -26,29 +26,31 @@ ob_start();
             </div>
             <div class="row">
                 <?php foreach ($posts as $post): ?>
+                
                 <div class="col-sm-4 portfolio-item">
                     
                         
                         <div class="caption">
                             <div class="caption-content">
 
-                                <a href="index.php?action=viewsinglepost&id=
-                                    <?php echo htmlspecialchars($post->getId()); ?>">
+                                <a href="index.php?action=viewsinglepost&id=<?php echo htmlspecialchars($post->getId()); ?>">
                                     <h2><?php echo 
                                     htmlspecialchars($post->getTitre()); ?>
                                     </h2></a>
                                   <p><?php echo 
                                     htmlspecialchars($post->getChapo()); ?></p>
                                  <p><em>Créé le <?php echo 
-                                    htmlspecialchars($post->getCreated_at()); 
+                                    htmlspecialchars($post->getCreatedAt()); 
                                     ?>. Modifié le <?php echo 
-                                 htmlspecialchars($post->getUpdated_at());
+                                 htmlspecialchars($post->getUpdatedAt());
 ?>.</em></p>
                             </div>
                         </div>
                         
                     </a>
                 </div>
+                 <div class="col-sm-1"> </div>
+                  
                 
                 <?php endforeach; ?>
             </div>

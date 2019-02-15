@@ -78,8 +78,8 @@ class PostsModel
         $request = $this->db->prepare(
             'SELECT id, titre, auteur, titre, chapo, contenu, '
                 . 'DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") '
-                . 'AS created_at, DATE_FORMAT'
-            . '(updated_at, "%d/%m/%Y à %Hh%i") AS updated_at '
+                . 'AS createdAt, DATE_FORMAT'
+            . '(updated_at, "%d/%m/%Y à %Hh%i") AS updatedAt '
                 . 'FROM posts WHERE id = ?'
         );
         $request->execute(array($id));
@@ -105,8 +105,8 @@ class PostsModel
         $posts = [];
         $request = $this->db->query(
             'SELECT id, titre, chapo, DATE_FORMAT'
-                . '(created_at, "%d/%m/%Y à %Hh%i") AS created_at, DATE_FORMAT'
-                . '(updated_at, "%d/%m/%Y à %Hh%i") AS updated_at '
+                . '(created_at, "%d/%m/%Y à %Hh%i") AS createdAt, DATE_FORMAT'
+                . '(updated_at, "%d/%m/%Y à %Hh%i") AS updatedAt '
             . 'FROM posts ORDER BY updated_at DESC, id DESC'
         );
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {

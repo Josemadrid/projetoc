@@ -39,7 +39,7 @@ class Utilisateur_Controlleur
     public function __construct()
     {
 
-        $this->utilisateurmanageur = new Utilisateur_model();
+        $this->utilisateurmanageur = new UtilisateurModel();
     }
 
     /**
@@ -72,7 +72,7 @@ class Utilisateur_Controlleur
           
             $users = new Utilisateur($datas);
 
-            $result = $this->utilisateurmanageur->add_utilisateur($users);
+            $result = $this->utilisateurmanageur->addUtilisateur($users);
 
             if ($result) {
 

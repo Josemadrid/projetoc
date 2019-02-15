@@ -59,7 +59,7 @@ class Posts
      */
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
 
     /**
@@ -69,7 +69,7 @@ class Posts
      */
     public function getAuteur()
     {
-        return $this->auteur;
+        return $this->_auteur;
     }
 
     /**
@@ -79,7 +79,7 @@ class Posts
      */
     public function getTitre()
     {
-        return $this->titre;
+        return $this->_titre;
     }
 
     /**
@@ -89,7 +89,7 @@ class Posts
      */
     public function getChapo()
     {
-        return $this->chapo;
+        return $this->_chapo;
     }
 
     /**
@@ -99,7 +99,7 @@ class Posts
      */
     public function getContenu()
     {
-        return $this->contenu;
+        return $this->_contenu;
     }
 
     /**
@@ -109,7 +109,7 @@ class Posts
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->_created_at;
     }
 
     /**
@@ -119,7 +119,7 @@ class Posts
      */
     public function getUpdatedAt()
     {
-        return $this->updated_at;
+        return $this->_updated_at;
     }
 
     /**
@@ -131,7 +131,7 @@ class Posts
      */
     public function setId(int $id)
     {
-        $this->id = (int) $id;
+        $this->_id = (int) $id;
     }
 
     /**
@@ -143,7 +143,7 @@ class Posts
      */
     public function setAuteur(string $auteur)
     {
-        $this->auteur = $auteur;
+        $this->_auteur = $auteur;
     }
     /**
      * SETTER
@@ -154,7 +154,7 @@ class Posts
      */
     public function setTitre(string $titre)
     {
-        $this->titre = $titre;
+        $this->_titre = $titre;
     }
     /**
      * SETTER
@@ -165,7 +165,7 @@ class Posts
      */
     public function setChapo($chapo)
     {
-        $this->chapo = $chapo;
+        $this->_chapo = $chapo;
     }
     /**
      * SETTER
@@ -176,7 +176,7 @@ class Posts
      */
     public function setContenu($contenu)
     {
-        $this->contenu = $contenu;
+        $this->_contenu = $contenu;
     }
     /**
      * SETTER
@@ -188,7 +188,7 @@ class Posts
     public function setCreatedAt($created_at)
     {
 
-        $this->created_at = $created_at;
+        $this->_created_at = $created_at;
     }
     /**
      * SETTER
@@ -199,7 +199,7 @@ class Posts
      */
     public function setUpdatedAt($updated_at)
     {
-        $this->updated_at = $updated_at;
+        $this->_updated_at = $updated_at;
     }
 
 }

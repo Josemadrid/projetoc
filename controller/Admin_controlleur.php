@@ -63,18 +63,23 @@ class AdminControlleur
         if (!empty($comment)) {
             
             
-            $datas['contenu_commentaire'] = $comment['Message'];
-            $datas['post_id'] = $comment['postId'];
+            $datas['contenuCommentaire'] = $comment['Message'];
+            $datas['postId'] = $comment['postId'];
+            $datas['UtilisateurId'] = $_SESSION['user']->getId();
+            var_dump($_SESSION);
+            
+            
             
 
             $comment = new Commentaire($datas);
+            var_dump($comment);
             
             
-            $result = $this->admin->add_comment($comment);
+            $result = $this->admin->addcomment($comment);
             if ($result) {
                 header(
                     'Location:index.php?'
-                    . 'action=viewsinglepost&id=' . $comment->getPost_id()
+                    . 'action=viewsinglepost&id=' . $comment->getPostId()
                 );
             }
         }

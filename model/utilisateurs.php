@@ -53,7 +53,7 @@ class Utilisateur
      */
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
     /**
      * GETTERS
@@ -62,7 +62,7 @@ class Utilisateur
      */
     public function getEmail()
     {
-        return $this->email;
+        return $this->_email;
     }
     /**
      * GETTERS
@@ -71,7 +71,7 @@ class Utilisateur
      */
     public function getPseudo()
     {
-        return $this->pseudo;
+        return $this->_pseudo;
     }
     /**
      * GETTERS
@@ -80,7 +80,7 @@ class Utilisateur
      */
     public function getPassword()
     {
-        return $this->password;
+        return $this->_password;
     }
     /**
      * GETTERS
@@ -89,7 +89,7 @@ class Utilisateur
      */
     public function getRole()
     {
-        return $this->role;
+        return $this->_role;
     }
     /**
      * GETTERS
@@ -106,7 +106,7 @@ class Utilisateur
      */
     public function setId(int $id)
     {
-        $this->id = $id;
+        $this->_id = $id;
     }
     /**
      * SETTER
@@ -117,7 +117,7 @@ class Utilisateur
      */
     public function setEmail(string $email)
     {
-        $this->email = $email;
+        $this->_email = $email;
     }
     /**
      * SETTER
@@ -128,7 +128,7 @@ class Utilisateur
      */
     public function setPseudo(string $pseudo)
     {
-        $this->pseudo = $pseudo;
+        $this->_pseudo = $pseudo;
     }
     /**
      * SETTER
@@ -139,7 +139,7 @@ class Utilisateur
      */
     public function setPassword(string $password)
     {
-        $this->password = $password;
+        $this->_password = $password;
     }
     /**
      * SETTER
@@ -150,6 +150,6 @@ class Utilisateur
      */
     public function setRole(int $role)
     {
-        $this->role = $role;
+        $this->_role = $role;
     }
 }

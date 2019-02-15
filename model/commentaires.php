@@ -61,7 +61,7 @@ class Commentaire
      */
     public function getUtilisateur()
     {
-        return $this->utilisateur;
+        return $this->_utilisateur;
     }
 
     /**
@@ -71,7 +71,7 @@ class Commentaire
      */
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
 
     /**
@@ -81,7 +81,7 @@ class Commentaire
      */
     public function getPostId()
     {
-        return $this->post_id;
+        return $this->_post_id;
     }
 
     /**
@@ -91,7 +91,7 @@ class Commentaire
      */
     public function getUtilisateurId()
     {
-        return $this->utilisateur_id;
+        return $this->_utilisateur_id;
     }
 
     /**
@@ -101,7 +101,7 @@ class Commentaire
      */
     public function getContenuCommentaire()
     {
-        return $this->contenu_commentaire;
+        return $this->_contenu_commentaire;
     }
 
     /**
@@ -111,7 +111,7 @@ class Commentaire
      */
     public function getDatecreationCommentaire()
     {
-        return $this->datecreation_commentaire;
+        return $this->_datecreation_commentaire;
     }
 
     /**
@@ -121,7 +121,7 @@ class Commentaire
      */
     public function getDatemodificationCommentaire()
     {
-        return $this->datemodification_commentaire;
+        return $this->_datemodification_commentaire;
     }
 
     /**
@@ -131,7 +131,7 @@ class Commentaire
      */
     public function getValid()
     {
-        return $this->valid;
+        return $this->_valid;
     }
 
     /**
@@ -143,7 +143,7 @@ class Commentaire
      */
     public function setUtilisateur($utilisateur)
     {
-        $this->utilisateur = $utilisateur;
+        $this->_utilisateur = $utilisateur;
     }
 
     /**
@@ -155,7 +155,7 @@ class Commentaire
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     /**
@@ -167,7 +167,7 @@ class Commentaire
      */
     public function setPostId($post_id)
     {
-        $this->post_id = (int) $post_id;
+        $this->_post_id = (int) $post_id;
     }
 
     /**
@@ -179,7 +179,7 @@ class Commentaire
      */
     public function setUtilisateurId($utilisateur_id)
     {
-        $this->utilisateur_id = $utilisateur_id;
+        $this->_utilisateur_id = $utilisateur_id;
     }
 
     /**
@@ -191,7 +191,7 @@ class Commentaire
      */
     public function setContenuCommentaire($contenu_commentaire)
     {
-        $this->contenu_commentaire = $contenu_commentaire;
+        $this->_contenu_commentaire = $contenu_commentaire;
     }
 
     /**
@@ -203,7 +203,7 @@ class Commentaire
      */
     public function setDatecreationCommentaire($datecreation_commentaire)
     {
-        $this->datecreation_commentaire = $datecreation_commentaire;
+        $this->_datecreation_commentaire = $datecreation_commentaire;
     }
 
     /**
@@ -215,7 +215,7 @@ class Commentaire
      */
     public function setDatemodificationCommentaire($datemodification_commentaire)
     {
-        $this->datemodification_commentaire = $datemodification_commentaire;
+        $this->_datemodification_commentaire = $datemodification_commentaire;
     }
 
     /**
@@ -227,7 +227,7 @@ class Commentaire
      */
     public function setValid($valid)
     {
-        $this->valid = $valid;
+        $this->_valid = $valid;
     }
 
 }

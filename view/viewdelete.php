@@ -45,8 +45,8 @@ ob_start();
         <p><strong><?php echo htmlspecialchars($post->getChapo()); ?></strong></p>
         <p><?php echo htmlspecialchars($post->getContenu()); ?></p>
         <p><em>Ecrit par <?php echo htmlspecialchars($post->getAuteur()); ?>,
-                le <?php echo htmlspecialchars($post->getCreated_at()); ?>.
-                Modifié le <?php echo htmlspecialchars($post->getUpdated_at());
+                le <?php echo htmlspecialchars($post->getCreatedAt()); ?>.
+                Modifié le <?php echo htmlspecialchars($post->getUpdatedAt());
                 ?>.</em></p>
         
     </div>

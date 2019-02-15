@@ -42,7 +42,7 @@ class Posts_Controller
     public function __construct()
     {
 
-        $this->manager = new Posts_model();
+        $this->manager = new PostsModel();
         $this->comment = new Commentaire_model();
         
     }
@@ -66,7 +66,7 @@ class Posts_Controller
 
             $posts = new Posts($datas);
             
-            $result = $this->manager->add_post($posts);
+            $result = $this->manager->addPost($posts);
             if ($result) {
                 header('Location: /projetoc/?action=listposts');
             }
