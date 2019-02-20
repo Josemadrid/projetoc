@@ -37,7 +37,7 @@ function email()
 {
     $mail = new PHPMailer(true);
     try {
-        $log=parse_ini_file('config/php.ini');
+        $log=parse_ini_file('C:\wamp64\www\config/php.ini');
         $mail->IsSMTP();
         //
         $mail->SMTPAuth = true;
