@@ -44,7 +44,7 @@ class Conectdb
         }    
 
         catch(Exeption $e){
-            die("Erreur" . $e->getMessage());
+            echo("Erreur" . $e->getMessage());
             echo "ligne de erreur" . $e->getLine();
 
 
