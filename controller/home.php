@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * CONTROLLEUR POUR ACCUEIL.
  * 
@@ -14,20 +15,20 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
- /**
-  * Permit to get view accueil
-  *
-  * @param array $token sécurité CSRF
-  * 
-  * @return void
-  */
+/**
+ * Permit to get view accueil
+ *
+ * @param array $token sécurité CSRF
+ * 
+ * @return void
+ */
 function home($token)
 {
     $_SESSION['token'] = $token;
     //ou aussi je peux creer una clase
     include 'view/accueil.php';
-    
 }
+
 /**
  * Permit to send mail
  *
@@ -37,7 +38,7 @@ function email()
 {
     $mail = new PHPMailer(true);
     try {
-        $log=parse_ini_file('C:\wamp64\www\config/php.ini');
+        $log = parse_ini_file('C:\wamp64\www\config/php.ini');
         $mail->IsSMTP();
         //
         $mail->SMTPAuth = true;
@@ -50,19 +51,12 @@ function email()
         $mail->addAddress('josemadridgil90@gmail.com', 'Jose');
         $mail->isHTML(true);
         $mail->Subject = 'Mon blog';
-        $mail->Body    = $message = $_POST["message"];
-        
-    
+        $mail->Body = $message = $_POST["message"];
+
+
         $mail->send();
         header('Location: /projetoc/');
-     
-    } catch (Exception $e)
-    {
+    } catch (Exception $e) {
         echo ' Error message pas envoyé: ', $mail->ErrorInfo;
-     
     }
 }
-
-
-
-?>

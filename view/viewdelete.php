@@ -16,42 +16,44 @@ ob_start();
 
 
 
-<?php echo
+<?php
+echo
 
-'<form class="form" role="form" action="index.php?action=delete&id=' . 
-        htmlspecialchars($post->getId()) . '" method="post">
+'<form class="form" role="form" action="index.php?action=delete&id=' .
+ htmlspecialchars($post->getId()) . '" method="post">
                                     <div class="col-lg-12 text-center">
                                     <p style="color:#FF0000";><strong>
                                     CONFIRMATION</strong></p>
                                         <input type="hidden" id="id" 
-                                        name="id" value="' . 
-        htmlspecialchars($post->getId()) . '">
+                                        name="id" value="' .
+ htmlspecialchars($post->getId()) . '">
                                         <button type="submit" 
                                         name="delete" 
                                         class="btn btn-danger">Oui</button>
                                         <a class="btn btn-primary" 
-                                        href="index.php?action=viewsinglepost&id=' . 
-        htmlspecialchars($post->getId()) .'">Non</a>
+                                        href="index.php?action=viewsinglepost&id=' .
+ htmlspecialchars($post->getId()) . '">Non</a>
                                     </div>
-                                </form>'; ?>
+                                </form>';
+?>
 
 
 <!-- View Post -->
 <section id="portfolio">
-<div class="container">
-<div class="row">
-    <div class="col-lg-12 col-md-12 mx-auto">
-        <h2><?php echo htmlspecialchars($post->getTitre()); ?></h2>
-        <p><strong><?php echo htmlspecialchars($post->getChapo()); ?></strong></p>
-        <p><?php echo htmlspecialchars($post->getContenu()); ?></p>
-        <p><em>Ecrit par <?php echo htmlspecialchars($post->getAuteur()); ?>,
-                le <?php echo htmlspecialchars($post->getCreatedAt()); ?>.
-                Modifié le <?php echo htmlspecialchars($post->getUpdatedAt());
-                ?>.</em></p>
-        
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 mx-auto">
+                <h2><?php echo htmlspecialchars($post->getTitre()); ?></h2>
+                <p><strong><?php echo htmlspecialchars($post->getChapo()); ?></strong></p>
+                <p><?php echo htmlspecialchars($post->getContenu()); ?></p>
+                <p><em>Ecrit par <?php echo htmlspecialchars($post->getAuteur()); ?>,
+                        le <?php echo htmlspecialchars($post->getCreatedAt()); ?>.
+                        Modifié le <?php echo htmlspecialchars($post->getUpdatedAt());
+?>.</em></p>
+
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </section>
 
 
@@ -59,6 +61,6 @@ ob_start();
 
 
 <?php
-$content=ob_get_clean();
+$content = ob_get_clean();
 
 require 'view/template.php';

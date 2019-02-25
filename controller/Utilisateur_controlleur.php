@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CONTROLLEUR POUR UTILISATEUR.
  * 
@@ -13,8 +14,7 @@
  */
 require_once 'model/conection_db.php';
 require_once 'model/utilisateur_model.php';
-require_once  'model/utilisateurs.php';
-
+require_once 'model/utilisateurs.php';
 
 /**
  * Controller utilisateur class
@@ -54,6 +54,7 @@ class Utilisateur_Controlleur
         $_SESSION['token'] = $token;
         include 'view/viewinscription.php';
     }
+
     /**
      * Permit add users
      * 
@@ -68,8 +69,8 @@ class Utilisateur_Controlleur
             $datas['pseudo'] = $user['pseudo'];
             $datas['email'] = $user['email'];
             $datas['password'] = hash('sha256', $user['password']);
-            
-          
+
+
             $users = new Utilisateur($datas);
 
             $result = $this->utilisateurmanageur->addUtilisateur($users);
@@ -78,15 +79,11 @@ class Utilisateur_Controlleur
 
                 header('Location: /projetoc/?action=home');
             }
-
         } else {
             header('Location: /projetoc/?action=connection');
         }
-        
-            
-        
-
     }
+
     /**
      * Permit to connection users
      *
@@ -96,51 +93,40 @@ class Utilisateur_Controlleur
      */
     public function connection(array $users)
     {
- 
-               
-            
-           $datas['pseudo'] = $users['pseudo'];
-           $datas['password'] = hash('sha256', $users['password']);
-            
-            
 
-           $users = new Utilisateur($datas);
 
-            
-           $result = $this->utilisateurmanageur->connect($users);
-            
+
+        $datas['pseudo'] = $users['pseudo'];
+        $datas['password'] = hash('sha256', $users['password']);
+
+
+
+        $users = new Utilisateur($datas);
+
+
+        $result = $this->utilisateurmanageur->connect($users);
+
         if ($result) {
 
             $users->hydrate($result);
             $_SESSION['user'] = $users;
-                
-            if ($_SESSION['user']->getRole() == 2) {
-                   header('Location: /projetoc/?action=admin&adminaction=accueil');
-            } else {
-                
-                header('Location: /projetoc/?action=home'); 
-            }
-                
 
+            if ($_SESSION['user']->getRole() == 2) {
+                header('Location: /projetoc/?action=admin&adminaction=accueil');
+            } else {
+
+                header('Location: /projetoc/?action=home');
+            }
         } else {
-            
+
             header('Location: /projetoc/?action=connection');
         }
-            
-        
-
-
-    
-        
-
     }
 
-    
-
-    
-
-
-
-
+    public function disconnect()
+    {
+        session_destroy();
+        header('Location: /projetoc/?action=home');
+    }
 
 }

@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 /**
  * VIEW INSCRIPTION.
  * 
@@ -12,7 +12,8 @@
  * @version  GIT: Release: 1.0.0
  * @link     URL Documentation
  */
-ob_start(); ?>
+ob_start();
+?>
 <section>
     <div class="container flipboard-boxes flipboard-inscription">
         <div class="row">
@@ -52,7 +53,7 @@ ob_start(); ?>
                                    for="password">Votre mot de
                                 passe
                                 : </label> <input class="form-control" 
-                                       type="password"
+                                              type="password"
                                               name="password"
                                               id="password"
                                               required>
@@ -61,11 +62,11 @@ ob_start(); ?>
                             <label class="form-label card-inscription-text" 
                                    for="confirmpassword">Confirmez
                                 votre mot de passe : </label> <input 
-                                    class="form-control"
-                                                              type="password"
-                                                              name="confirmpassword"
-                                                              id="confirmpassword"
-                                                              required>
+                                class="form-control"
+                                type="password"
+                                name="confirmpassword"
+                                id="confirmpassword"
+                                required>
                         </div>
                         <br>
                         <div>
@@ -75,7 +76,7 @@ ob_start(); ?>
                                 Soumettre
                             </button>
                             <span id="signup-success"><span class="oi oi-check">
-                                
+
                                 </span> Succès, Vous pouvez 
                                 vous connecter maintenant</span>
                         </div>
@@ -115,7 +116,7 @@ ob_start(); ?>
                                    for="password">Votre mot de
                                 passe
                                 : </label> <input class="form-control" 
-                                       type="password"
+                                              type="password"
                                               name="password"
                                               id="newpassword"
                                               required>
@@ -129,7 +130,7 @@ ob_start(); ?>
                                 Soumettre
                             </button>
                             <span id="signup-success"><span class="oi oi-check">
-                                
+
                                 </span> Succès, Vous pouvez vous 
                                 connecter maintenant</span>
                         </div>

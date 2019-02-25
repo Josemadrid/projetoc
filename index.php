@@ -33,31 +33,28 @@ $user_controlleur = new Utilisateur_Controlleur();
 try {
     if (isset($_GET['action'])) {
 
-        if ($_GET['action'] == 'home') {
+        if ($_GET['action'] == 'disconnect') {
+            $user_controlleur->disconnect();
+        } elseif ($_GET['action'] == 'home') {
 
             $token = bin2hex(random_bytes(32));
             home($token);
         } elseif ($_GET['action'] == 'mail') {
 
             //On vérifie que tous les jetons sont là
-            if (isset($_SESSION['token']) && isset($_POST['token'])
-                && ! empty($_SESSION['token']) && ! empty($_POST['token'])
+            if (isset($_SESSION['token']) && isset($_POST['token']) && !empty($_SESSION['token']) && !empty($_POST['token'])
             ) {
 
                 // On vérifie que les deux correspondent
                 if ($_SESSION['token'] == $_POST['token']) {
 
-                    if (isset($_POST['prenom'])  
-                        && !empty(trim($_POST['prenom']))
+                    if (isset($_POST['prenom']) && !empty(trim($_POST['prenom']))
                     ) {
-                        if (isset($_POST['email'])  
-                            && !empty(trim($_POST['email']))
+                        if (isset($_POST['email']) && !empty(trim($_POST['email']))
                         ) {
-                            if (isset($_POST['telephone'])  
-                                && !empty(trim($_POST['telephone']))
+                            if (isset($_POST['telephone']) && !empty(trim($_POST['telephone']))
                             ) {
-                                if (isset($_POST['message'])  
-                                    && !empty(trim($_POST['message']))
+                                if (isset($_POST['message']) && !empty(trim($_POST['message']))
                                 ) {
                                     email();
                                 }
@@ -76,8 +73,7 @@ try {
                 $instance->viewadd($token);
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                if (isset($_SESSION['token']) && isset($_POST['token'])
-                    && ! empty($_SESSION['token']) && ! empty($_POST['token'])
+                if (isset($_SESSION['token']) && isset($_POST['token']) && !empty($_SESSION['token']) && !empty($_POST['token'])
                 ) {
 
 
@@ -85,17 +81,13 @@ try {
 
 
 
-                        if (isset($_POST['auteur'])  
-                            && !empty(trim($_POST['auteur']))
+                        if (isset($_POST['auteur']) && !empty(trim($_POST['auteur']))
                         ) {
-                            if (isset($_POST['titre'])  
-                                && !empty(trim($_POST['titre']))
+                            if (isset($_POST['titre']) && !empty(trim($_POST['titre']))
                             ) {
-                                if (isset($_POST['chapo'])  
-                                    && !empty(trim($_POST['chapo']))
+                                if (isset($_POST['chapo']) && !empty(trim($_POST['chapo']))
                                 ) {
-                                    if (isset($_POST['contenu']) 
-                                        && !empty(trim($_POST['contenu']))
+                                    if (isset($_POST['contenu']) && !empty(trim($_POST['contenu']))
                                     ) {
 
                                         $instance->add($_POST);
@@ -150,8 +142,7 @@ try {
             } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-                if (isset($_SESSION['token']) && isset($_POST['token'])
-                    && ! empty($_SESSION['token']) && ! empty($_POST['token'])
+                if (isset($_SESSION['token']) && isset($_POST['token']) && !empty($_SESSION['token']) && !empty($_POST['token'])
                 ) {
 
 
@@ -159,17 +150,13 @@ try {
 
 
 
-                        if (isset($_POST['pseudo'])  
-                            && !empty(trim($_POST['pseudo']))
+                        if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))
                         ) {
-                            if (isset($_POST['email']) 
-                                && !empty(trim($_POST['email']))
+                            if (isset($_POST['email']) && !empty(trim($_POST['email']))
                             ) {
-                                if (isset($_POST['password']) 
-                                    && !empty(trim($_POST['password']))
+                                if (isset($_POST['password']) && !empty(trim($_POST['password']))
                                 ) {
-                                    if (isset($_POST['confirmpassword']) 
-                                        && !empty(trim($_POST['confirmpassword']))
+                                    if (isset($_POST['confirmpassword']) && !empty(trim($_POST['confirmpassword']))
                                     ) {
 
                                         $user_controlleur->inscription($_POST);
@@ -190,11 +177,9 @@ try {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $token = bin2hex(random_bytes(32));
 
-                if (isset($_POST['pseudo'])  
-                    && !empty(trim($_POST['pseudo']))
+                if (isset($_POST['pseudo']) && !empty(trim($_POST['pseudo']))
                 ) {
-                    if (isset($_POST['password'])  
-                        && !empty(trim($_POST['password']))
+                    if (isset($_POST['password']) && !empty(trim($_POST['password']))
                     ) {
                         $user_controlleur->connection($_POST);
                     }
@@ -208,10 +193,9 @@ try {
 
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                   
 
-                    if (isset($_SESSION['token']) && isset($_POST['token'])
-                        && ! empty($_SESSION['token']) && ! empty($_POST['token'])
+
+                    if (isset($_SESSION['token']) && isset($_POST['token']) && !empty($_SESSION['token']) && !empty($_POST['token'])
                     ) {
 
 
@@ -219,11 +203,9 @@ try {
 
 
 
-                            if (isset($_POST['postId'])  
-                                && !empty(trim($_POST['postId']))
+                            if (isset($_POST['postId']) && !empty(trim($_POST['postId']))
                             ) {
-                                if (isset($_POST['Message'])  
-                                    && !empty(trim($_POST['Message']))
+                                if (isset($_POST['Message']) && !empty(trim($_POST['Message']))
                                 ) {
 
 

@@ -195,8 +195,4 @@ class Commentaire_Model
         return $request->execute(['id'=> $id]);
     }
 
-  
-
-
-
 }
