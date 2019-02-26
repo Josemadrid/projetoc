@@ -28,7 +28,7 @@ class UtilisateurModel
 {
 
     private $db;
-    private $user = [];
+    
 
     /**
      * Constructeur qui va se connecter a la bd.

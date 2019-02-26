@@ -28,7 +28,7 @@ class PostsModel
 {
 
     private $db;
-    private $posts = [];
+    
 
     /**
      * Constructeur qui va se connecter a la bd.

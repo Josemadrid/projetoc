@@ -29,7 +29,7 @@ class Commentaire_Model
 
 
     private $db;
-    private $comment=[];
+    
     /**
      * Constructeur qui va se connecter a la bd.
      *
