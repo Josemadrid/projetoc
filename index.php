@@ -228,7 +228,8 @@ try {
             if ($_SESSION['user']->getRole() == 2) {
                 if (isset($_GET['adminaction'])) {
                     if ($_GET['adminaction'] == 'accueil') {
-                        $admin_controlleur->accueil();
+                        $token = bin2hex(random_bytes(32));
+                        $admin_controlleur->accueil($token);
                     }
                     if ($_GET['adminaction'] == 'viewadmin') {
                         $admin_controlleur->viewadmin();

@@ -115,7 +115,9 @@ class Commentaire_Model
     {
         $comment = [];
         $request = $this->db->prepare(
-            'SELECT *,contenu_commentaire AS ContenuCommentaire FROM commentaires '
+            'SELECT *,contenu_commentaire AS ContenuCommentaire, '
+                . 'DATE_FORMAT(datecreation_commentaire, "%d/%m/%Y à %Hh%i") '
+                . 'AS DatecreationCommentaire FROM commentaires '
             . 'WHERE valid = 0 LIMIT 5'
         );
         $request->execute();

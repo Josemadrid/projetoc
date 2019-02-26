@@ -47,9 +47,9 @@ class AdminControlleur
     //
   //@return void
 
-    public function accueil()
+    public function accueil($token)
     {
-
+        
 
         include 'view/accueil.php';
     }
