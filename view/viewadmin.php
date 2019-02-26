@@ -47,8 +47,7 @@ ob_start();
                                 <strong> <?php echo
                         htmlspecialchars($comment->getContenuCommentaire());
                             ?>
-                                    || <em>Le <?php echo
-                                htmlspecialchars($comment->getDatecreationCommentaire());
+                                    || <em>Le <?php echo htmlspecialchars($comment->getDatecreationCommentaire());
                                 ?>
                                 </strong>
                                 <p class="text-right buttonAdmin">

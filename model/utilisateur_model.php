@@ -27,8 +27,8 @@ require_once 'conection_db.php';
 class UtilisateurModel
 {
 
-    private $_db;
-    private $_user = [];
+    private $db;
+    private $user = [];
 
     /**
      * Constructeur qui va se connecter a la bd.

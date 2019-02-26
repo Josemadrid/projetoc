@@ -27,8 +27,8 @@ require_once 'conection_db.php';
 class PostsModel
 {
 
-    private $_db;
-    private $_posts = [];
+    private $db;
+    private $posts = [];
 
     /**
      * Constructeur qui va se connecter a la bd.

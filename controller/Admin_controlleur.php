@@ -28,8 +28,7 @@ require_once 'model/commentaires.php';
 
 class AdminControlleur
 {
-
-    private $_admin;
+    private $admin;
 
     //
     //Constructeur qui va appeler le model des commentaires

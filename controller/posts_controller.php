@@ -31,8 +31,8 @@ require_once  'model/commentaires.php';
 class Posts_Controller
 {
 
-    private $_manager;
-    private $_comment;
+    private $manager;
+    private $comment;
     
     /**
      * Constructeur qui va appeler les model des commentaires et des posts

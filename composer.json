@@ -1,5 +1,9 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "name": "pc/projetoc",
+    "description": "Projet blog personnel",
+    "homepage": "https://github.com/Josemadrid/projetoc",
+    "license": "MIT",
     "authors": [
         {
             "name": "Pepito",

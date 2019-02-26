@@ -16,6 +16,9 @@ require_once 'model/conection_db.php';
 require_once 'model/utilisateur_model.php';
 require_once 'model/utilisateurs.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 /**
  * Controller utilisateur class
  *
@@ -29,7 +32,7 @@ require_once 'model/utilisateurs.php';
 class Utilisateur_Controlleur
 {
 
-    private $_Utilisateurmanageur;
+    private $utilisateurmanageur;
 
     /**
      * Constructeur qui va appeler le model des utilisateurs
@@ -49,6 +52,40 @@ class Utilisateur_Controlleur
      * 
      * @return void
      */
+    public function home($token)
+    {
+        $_SESSION['token'] = $token;
+        //ou aussi je peux creer una clase
+        include 'view/accueil.php';
+    }
+
+    public function email()
+    {
+        $mail = new PHPMailer(true);
+        try {
+            $log = parse_ini_file('config/php.ini');
+            $mail->IsSMTP();
+            //
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = $log['secure'];
+            $mail->Host = $log['host'];
+            $mail->Port = $log['port'];
+            $mail->Username = $log['username'];
+            $mail->Password = $log['password'];
+            $mail->setFrom('josemadridgil90@gmail.com', 'Blog');
+            $mail->addAddress('josemadridgil90@gmail.com', 'Jose');
+            $mail->isHTML(true);
+            $mail->Subject = 'Mon blog';
+            $mail->Body = $_POST["message"];
+
+
+            $mail->send();
+            header('Location: /projetoc/');
+        } catch (Exception $e) {
+            echo ' Error message pas envoyé: ', $mail->ErrorInfo;
+        }
+    }
+
     public function viewconnection($token)
     {
         $_SESSION['token'] = $token;

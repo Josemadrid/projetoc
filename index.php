@@ -12,8 +12,7 @@
  * @version  GIT: Release: 1.0.0
  * @link     URL Documentation
  */
-require 'controller/home.php';
-require 'controller/listposts.php';
+
 require 'controller/posts_controller.php';
 require 'controller/Utilisateur_controlleur.php';
 require 'vendor/autoload.php';
@@ -38,7 +37,7 @@ try {
         } elseif ($_GET['action'] == 'home') {
 
             $token = bin2hex(random_bytes(32));
-            home($token);
+            $user_controlleur->home($token);
         } elseif ($_GET['action'] == 'mail') {
 
             //On vérifie que tous les jetons sont là
@@ -56,7 +55,7 @@ try {
                             ) {
                                 if (isset($_POST['message']) && !empty(trim($_POST['message']))
                                 ) {
-                                    email();
+                                    $user_controlleur->email();
                                 }
                             }
                         }
@@ -255,7 +254,7 @@ try {
     } else {
 
         $token = bin2hex(random_bytes(32));
-        home($token);
+        $user_controlleur->home($token);
     }
 } catch (Exception $e) {
     echo $e->getMessage();
