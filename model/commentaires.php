@@ -57,7 +57,7 @@ class Commentaire
     /**
      * GETTERS
      * 
-     * @return voide
+     * @return utilisateur
      */
     public function getUtilisateur()
     {

@@ -512,5 +512,11 @@ fieldset[disabled] .btn-success.active {
   text-shadow: 0px 1px 3px black;
   text-align: center;
 }
-
-
+.botonrojo {
+    padding: 10px 20px;
+    background-color: red; /* Color Rojo */
+    color: white;
+    border-radius: 10px;
+    background: linear-gradient(to top, #ff0000 0%, #ff99cc 100%);
+    
+}

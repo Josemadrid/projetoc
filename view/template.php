@@ -1,7 +1,7 @@
 
 <html>
     <head>
-      
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, 
@@ -88,11 +88,7 @@
                                     <?php
                                     if ($_SESSION['user']->getRole() == 2) {
                                         echo 'Bienvenue Patron';
-                                        ?></a></li><li class="page-scroll">
-                                    <a style="color:red" 
-                                       href="/projetoc/?action=admin&adminaction=viewadmin">ADMIN</a>
-
-                                </li><?php
+                                        ?></a></li><?php
                             } else {
 
                                 echo 'Bienvenue    ' .
@@ -184,8 +180,24 @@
                         </div>
 
                     </div>
+
                 </div>
+                
+                <?php
+                if (isset($_SESSION['user'])) {
+                if ($_SESSION['user']->getRole() == 2) {
+                    ?>
+              
+                <a class="botonrojo" href="/projetoc/?action=admin&adminaction=viewadmin"><span>ADMIN</span></a>
+                    
+
+                    <?php
+                }
+                }
+                ?>
+
             </div>
+
             <div class="footer-below">
                 <div class="container">
                     <div class="row">
@@ -231,3 +243,4 @@
 </footer>
 </body>
 </html>
+

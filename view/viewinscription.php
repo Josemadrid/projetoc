@@ -73,12 +73,9 @@ ob_start();
                             <button type="submit" class="btn btn-primary 
                                     signup-submit" name="signup"
                                     value="Soumettre" required>
-                                Soumettre
+                                Valider
                             </button>
-                            <span id="signup-success"><span class="oi oi-check">
 
-                                </span> Succès, Vous pouvez 
-                                vous connecter maintenant</span>
                         </div>
                         <input type="hidden" name="token" id="token" 
                                value="<?php echo $token; ?>" />
@@ -127,12 +124,9 @@ ob_start();
                                     signup-submit"
                                     name="signup"
                                     value="Soumettre" required>
-                                Soumettre
+                                Valider
                             </button>
-                            <span id="signup-success"><span class="oi oi-check">
 
-                                </span> Succès, Vous pouvez vous 
-                                connecter maintenant</span>
                         </div>
                         <input type="hidden" name="token" id="token" 
                                value="<?php echo $token; ?>" />
